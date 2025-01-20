@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room: Primera Guerra Mundial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="page-intro" class="page" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h1>Escape Room: Primera Guerra Mundial</h1>
+        <p>Explora los años iniciales de la Gran Guerra a través de este escape room interactivo. Descubre los eventos de 1914 y 1915 en la narrativa y el contexto histórico.</p>
+        <button class="button" onclick="nextPage('page-intro', 'page-1914-1')">Comenzar</button>
+    </div>
+
+    <!-- Preguntas basadas en la novela gráfica pura -->
+    <div id="page-1914-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h2>Prueba 1: El asesinato del archiduque</h2>
+        <p>Relacione los eventos narrados en la novela gráfica. ¿Qué grupo político estuvo detrás del asesinato de Francisco Fernando?</p>
+        <input type="text" id="answer-1914-1" class="input-field" placeholder="Escribe aquí tu respuesta">
+        <button class="button" onclick="checkAnswer('answer-1914-1', 'mano negra', 'page-1914-1', 'page-1914-2')">Enviar</button>
+    </div>
+
+    <div id="page-1914-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h2>Prueba 2: La movilización de tropas</h2>
+        <p>En la narrativa, se describe cómo las tropas se movilizaron rápidamente hacia los frentes. Según el mapa mostrado en la novela, ¿qué país neutral fue invadido?</p>
+        <div class="image">
+            <img src="https://drive.google.com/uc?id=MAP_IMAGE_ID" alt="Mapa de la invasión de Bélgica">
+        </div>
+        <input type="text" id="answer-1914-2" class="input-field" placeholder="Escribe aquí tu respuesta">
+        <button class="button" onclick="checkAnswer('answer-1914-2', 'bélgica', 'page-1914-2', 'page-1914-3')">Enviar</button>
+    </div>
+
+    <div id="page-1914-3" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h2>Prueba 3: Vida en las trincheras</h2>
+        <p>Describe las condiciones de vida en las trincheras según lo narrado en la novela gráfica. ¿Qué tres elementos causaban más sufrimiento a los soldados?</p>
+        <input type="text" id="answer-1914-3" class="input-field" placeholder="Escribe aquí tu respuesta">
+        <button class="button" onclick="checkAnswer('answer-1914-3', 'frío, hambre, miedo', 'page-1914-3', 'page-1914-4')">Enviar</button>
+    </div>
+
+    <!-- Preguntas del dossier histórico -->
+    <div id="page-1914-4" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h2>Prueba 4: Alianzas de la guerra</h2>
+        <p>Del dossier histórico, identifica las naciones que formaban parte de la Triple Entente en 1914.</p>
+        <form id="form-1914-4">
+            <label><input type="checkbox" value="correct"> Francia</label><br>
+            <label><input type="checkbox" value="correct"> Reino Unido</label><br>
+            <label><input type="checkbox" value="incorrect"> Alemania</label><br>
+            <label><input type="checkbox" value="correct"> Rusia</label><br>
+        </form>
+        <button class="button" onclick="checkMultipleAnswers('form-1914-4', 3, 'page-1914-4', 'page-1914-5')">Enviar</button>
+    </div>
+
+    <div id="page-1914-5" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h2>Prueba 5: Estrategias militares</h2>
+        <p>¿Qué país adoptó el "Plan Schlieffen" según lo indicado en el dossier histórico? ¿Cuál era su objetivo?</p>
+        <input type="text" id="answer-1914-5" class="input-field" placeholder="Escribe aquí tu respuesta">
+        <button class="button" onclick="checkAnswer('answer-1914-5', 'alemania, invadir francia rápidamente', 'page-1914-5', 'page-1915-1')">Enviar</button>
+    </div>
+
+    <div id="page-1915-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h2>Prueba 6: La guerra de desgaste</h2>
+        <p>Según el dossier histórico, ¿qué tácticas definieron la "guerra de desgaste" en 1915?</p>
+        <input type="text" id="answer-1915-1" class="input-field" placeholder="Escribe aquí tu respuesta">
+        <button class="button" onclick="checkAnswer('answer-1915-1', 'bombardeos masivos y ataques frontales', 'page-1915-1', 'page-final')">Enviar</button>
+    </div>
+
+    <div id="page-final" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=IMAGE_ID');">
+        <h1>¡Felicidades!</h1>
+        <p>Has completado las pruebas de 1914 y 1915. Gracias por participar en esta experiencia interactiva sobre la Primera Guerra Mundial.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
