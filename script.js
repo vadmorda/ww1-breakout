@@ -1,5 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Function to navigate between pages
+ document.addEventListener('DOMContentLoaded', () => {
+    const selectedCountries = [];
+   
+   
+   // Navigate to the next page
+    window.nextPage = (currentPageId, nextPageId) => {
+        document.getElementById(currentPageId).classList.add('hidden');
+        document.getElementById(nextPageId).classList.remove('hidden');
+    };  
+   
+   
+   // Function to navigate between pages
     window.nextPage = (currentPageId, nextPageId) => {
         const currentPage = document.getElementById(currentPageId);
         const nextPage = document.getElementById(nextPageId);
@@ -7,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentPage) currentPage.classList.add('hidden'); // Oculta la página actual
         if (nextPage) nextPage.classList.remove('hidden'); // Muestra la siguiente página
     };
-
+  
+  
     // Function to check Multiple Choice Questions
     window.checkMCQ = (formId, correctAnswer, currentPageId, nextPageId) => {
         const form = document.getElementById(formId);
@@ -80,6 +91,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 parentList.insertBefore(draggedElement, target);
             }
         }
+        draggedElement = null; // Resetea la variable
+    };
+});
+
+// Map interaction for Challenge 3
+    document.querySelectorAll('area').forEach(area => {
+        area.addEventListener('click', (event) => {
+            const answer = event.target.dataset.answer;
+            if (!selectedCountries.includes(answer)) {
+                selectedCountries.push(answer);
+                alert(`Selected: ${event.target.alt}`);
+            }
+        });
+    });
+// Validate answers for Challenge 3
+    window.submitMapAnswers = (currentPageId, nextPageId) => {
+        const correctAnswers = ['triple-alliance', 'triple-entente'];
+        const isCorrect = correctAnswers.every(answer => selectedCountries.includes(answer));
+        if (isCorrect) {
+            nextPage(currentPageId, nextPageId);
+        } else {
+            alert('Incorrect! Please try again.');
+        }
+    };
+});
         draggedElement = null; // Resetea la variable
     };
 });
