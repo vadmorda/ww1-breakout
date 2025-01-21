@@ -1,122 +1,85 @@
-// Navegación entre páginas
-function nextPage(current, next) {
-    const currentPage = document.getElementById(current);
-    const nextPage = document.getElementById(next);
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to navigate between pages
+    window.nextPage = (currentPageId, nextPageId) => {
+        const currentPage = document.getElementById(currentPageId);
+        const nextPage = document.getElementById(nextPageId);
 
-    // Añadir animación de salida
-    currentPage.style.animation = 'fadeOut 1s forwards';
-    setTimeout(() => {
-        currentPage.classList.add('hidden');
-        nextPage.classList.remove('hidden');
+        if (currentPage) currentPage.classList.add('hidden'); // Oculta la página actual
+        if (nextPage) nextPage.classList.remove('hidden'); // Muestra la siguiente página
+    };
 
-        // Añadir animación de entrada
-        nextPage.style.animation = 'fadeIn 1s forwards';
-    }, 1000);
-}
+    // Function to check Multiple Choice Questions
+    window.checkMCQ = (formId, correctAnswer, currentPageId, nextPageId) => {
+        const form = document.getElementById(formId);
+        const selectedOption = form.querySelector('input[type="radio"]:checked');
+        if (selectedOption && selectedOption.value === correctAnswer) {
+            nextPage(currentPageId, nextPageId);
+        } else {
+            alert('Incorrect! Try again.');
+        }
+    };
 
-// Validar respuestas
-function checkAnswer(inputId, correctAnswer, currentPage, nextPageId) {
-    const answer = document.getElementById(inputId).value.toLowerCase().trim();
-    const feedback = document.createElement('div');
+    // Function to check text input answers
+    window.checkAnswer = (inputId, correctAnswers, currentPageId, nextPageId) => {
+        const input = document.getElementById(inputId);
+        if (input && correctAnswers.includes(input.value.trim().toLowerCase())) {
+            nextPage(currentPageId, nextPageId);
+        } else {
+            alert('Incorrect! Try again.');
+        }
+    };
 
-    // Eliminar feedback previo
-    const existingFeedback = document.querySelector('.feedback');
-    if (existingFeedback) {
-        existingFeedback.remove();
-    }
+    // Function to check multiple correct answers (checkboxes)
+    window.checkMultipleAnswers = (formId, correctAnswers, currentPageId, nextPageId) => {
+        const form = document.getElementById(formId);
+        const selectedOptions = Array.from(form.querySelectorAll('input[type="checkbox"]:checked')).map(
+            (input) => input.value
+        );
+        if (JSON.stringify(selectedOptions.sort()) === JSON.stringify(correctAnswers.sort())) {
+            nextPage(currentPageId, nextPageId);
+        } else {
+            alert('Incorrect! Try again.');
+        }
+    };
 
-    if (answer === correctAnswer) {
-        feedback.innerText = '¡Correcto!';
-        feedback.style.color = 'green';
-        feedback.classList.add('feedback');
-        document.body.appendChild(feedback);
+    // Function to check drag-and-drop order (Timeline)
+    window.checkTimelineOrder = (listId, correctOrder, currentPageId, nextPageId) => {
+        const list = document.getElementById(listId);
+        const items = Array.from(list.children).map((item) => item.id); // Asegúrate de que los elementos tengan IDs únicos
+        if (JSON.stringify(items) === JSON.stringify(correctOrder)) {
+            nextPage(currentPageId, nextPageId);
+        } else {
+            alert('Incorrect order! Try again.');
+        }
+    };
 
-        setTimeout(() => {
-            nextPage(currentPage, nextPageId);
-        }, 1500);
-    } else {
-        feedback.innerText = 'Respuesta incorrecta. Intenta de nuevo.';
-        feedback.style.color = 'red';
-        feedback.classList.add('feedback');
-        document.body.appendChild(feedback);
-    }
-}
+    // Drag-and-drop functionality for Timeline Puzzle
+    let draggedElement = null;
 
-// Validar preguntas con múltiples respuestas
-function checkMultipleAnswers(formId, correctCount, currentPage, nextPageId) {
-    const selected = document.querySelectorAll(`#${formId} input:checked`);
-    const feedback = document.createElement('div');
+    window.drag = (event) => {
+        draggedElement = event.target;
+        event.dataTransfer.setData('text/plain', event.target.id);
+    };
 
-    // Eliminar feedback previo
-    const existingFeedback = document.querySelector('.feedback');
-    if (existingFeedback) {
-        existingFeedback.remove();
-    }
+    window.allowDrop = (event) => {
+        event.preventDefault();
+    };
 
-    if (
-        selected.length === correctCount &&
-        Array.from(selected).every(el => el.value === 'correct')
-    ) {
-        feedback.innerText = '¡Correcto!';
-        feedback.style.color = 'green';
-        feedback.classList.add('feedback');
-        document.body.appendChild(feedback);
+    window.drop = (event) => {
+        event.preventDefault();
+        const target = event.target.closest('li'); // Asegúrate de que sea un elemento de lista
 
-        setTimeout(() => {
-            nextPage(currentPage, nextPageId);
-        }, 1500);
-    } else {
-        feedback.innerText = 'Respuestas incorrectas. Intenta de nuevo.';
-        feedback.style.color = 'red';
-        feedback.classList.add('feedback');
-        document.body.appendChild(feedback);
-    }
-}
+        if (target && draggedElement) {
+            const parentList = target.parentElement;
+            const draggedIndex = Array.from(parentList.children).indexOf(draggedElement);
+            const targetIndex = Array.from(parentList.children).indexOf(target);
 
-// Animaciones de entrada y salida
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-.feedback {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 8px;
-    color: white;
-    z-index: 1000;
-    animation: fadeIn 0.5s ease-in-out, fadeOut 2s ease-in-out 1.5s forwards;
-}
-`;
-document.head.appendChild(style);
-
-// Efecto interactivo en botones
-const buttons = document.querySelectorAll('.button');
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-        button.style.transform = 'scale(1.1)';
-    });
-    button.addEventListener('mouseleave', () => {
-        button.style.transform = 'scale(1)';
-    });
+            if (draggedIndex < targetIndex) {
+                parentList.insertBefore(draggedElement, target.nextSibling);
+            } else {
+                parentList.insertBefore(draggedElement, target);
+            }
+        }
+        draggedElement = null; // Resetea la variable
+    };
 });
