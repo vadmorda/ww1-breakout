@@ -1,23 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const selectedCountries = []; // Array para almacenar selecciones
-   
-   
-   // Navigate to the next page
+    // Navigate between pages
     window.nextPage = (currentPageId, nextPageId) => {
-        document.getElementById(currentPageId).classList.add('hidden');
-        document.getElementById(nextPageId).classList.remove('hidden');
-    };  
-   
-   
-   // Navegar entre páginas
-    window.nextPage = (currentPageId, nextPageId) => {
-        document.getElementById(currentPageId).classList.add('hidden');
-        document.getElementById(nextPageId).classList.remove('hidden');
+        const currentPage = document.getElementById(currentPageId);
+        const nextPage = document.getElementById(nextPageId);
+
+        if (currentPage) currentPage.classList.add('hidden');
+        if (nextPage) nextPage.classList.remove('hidden');
     };
 
-  
-  
-    // Function to check Multiple Choice Questions
+    // Check multiple-choice questions
     window.checkMCQ = (formId, correctAnswer, currentPageId, nextPageId) => {
         const form = document.getElementById(formId);
         const selectedOption = form.querySelector('input[type="radio"]:checked');
@@ -28,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+  
     // Function to check text input answers
     window.checkAnswer = (inputId, correctAnswers, currentPageId, nextPageId) => {
         const input = document.getElementById(inputId);
@@ -51,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Function to check drag-and-drop order (Timeline)
+        // Check drag-and-drop order
     window.checkTimelineOrder = (listId, correctOrder, currentPageId, nextPageId) => {
         const list = document.getElementById(listId);
-        const items = Array.from(list.children).map((item) => item.id); // Asegúrate de que los elementos tengan IDs únicos
+        const items = Array.from(list.children).map((item) => item.id);
         if (JSON.stringify(items) === JSON.stringify(correctOrder)) {
             nextPage(currentPageId, nextPageId);
         } else {
@@ -62,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Drag-and-drop functionality for Timeline Puzzle
+    // Drag-and-drop functionality
     let draggedElement = null;
 
     window.drag = (event) => {
@@ -76,8 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.drop = (event) => {
         event.preventDefault();
-        const target = event.target.closest('li'); // Asegúrate de que sea un elemento de lista
-
+        const target = event.target.closest('li');
         if (target && draggedElement) {
             const parentList = target.parentElement;
             const draggedIndex = Array.from(parentList.children).indexOf(draggedElement);
@@ -89,10 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 parentList.insertBefore(draggedElement, target);
             }
         }
-        draggedElement = null; // Resetea la variable
+        draggedElement = null;
     };
 });
-
 
  // Función para manejar clics en las áreas del mapa
     document.querySelectorAll('area').forEach(area => {
