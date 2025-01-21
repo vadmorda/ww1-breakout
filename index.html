@@ -48,12 +48,18 @@
     <!-- Challenge 3 -->
 <div id="page-1914-3" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_3_IMAGE_ID');">
     <h2>Challenge 3: Map Identification</h2>
-    <p>On the map, identify members of the Triple Alliance and Triple Entente.</p>
+    <p>Click on the countries to identify members of the Triple Alliance and Triple Entente:</p>
     <div class="image">
-        <img src="https://drive.google.com/uc?id=1fntNfNiQnpxjPpJXsomKxt79I-1rGBXO" alt="Map of Alliances">
+        <img src="https://drive.google.com/uc?id=1fntNfNiQnpxjPpJXsomKxt79I-1rGBXO" alt="Map of Alliances" usemap="#map-alliance">
+        <map name="map-alliance">
+            <area shape="poly" coords="150,100,200,120,180,160,140,140" alt="Germany" data-answer="triple-alliance">
+            <area shape="poly" coords="300,200,350,220,330,260,280,240" alt="France" data-answer="triple-entente">
+            <area shape="poly" coords="400,300,450,320,430,360,380,340" alt="Russia" data-answer="triple-entente">
+            <!-- Puedes añadir más áreas aquí -->
+        </map>
     </div>
-    <input type="text" id="map-1914-3" class="input-field" placeholder="Your answer">
-    <button class="button" onclick="checkAnswer('map-1914-3', ['germany, austria-hungary, italy; france, russia, britain'], 'page-1914-3', 'page-1914-4')">Submit</button>
+    <p id="map-feedback" class="feedback"></p>
+    <button class="button" onclick="submitMapAnswers('page-1914-3', 'page-1914-4')">Submit</button>
 </div>
 
     <!-- Challenge 4 -->
