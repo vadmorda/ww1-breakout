@@ -8,23 +8,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Global Title -->
-    <div id="global-title">
-        <h1>Escape Room: World War I</h1>
-    </div>
- <!-- Global Title -->
+    <!-- Global Title -->
     <div id="global-title">
         <h1>Escape Room: World War I</h1>
     </div>
 
+    <!-- PDF Reader -->
+    <div id="pdf-reader">
+        <iframe src="https://drive.google.com/file/d/1zulDmTwGczH3Kt-dmQqAk1QKWxXbBIO5/preview" width="100%" height="100%" allow="autoplay"></iframe>
+    </div>
+
     <!-- Page Intro -->
-    <div id="page-intro" class="page" style="background-image: url('https://drive.google.com/uc?id=INTRO_IMAGE_ID');">
+    <div id="page-intro" class="page">
         <p>Welcome to the World War I Escape Room! Solve puzzles and explore historical events from 1914 to 1915. Click "Start" to begin your journey.</p>
         <button class="button" onclick="nextPage('page-intro', 'page-1914-1')">Start</button>
     </div>
 
-  <!-- Challenges -->
-    <div id="page-1914-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_1_IMAGE_ID');">
+    <!-- Challenge 1 -->
+    <div id="page-1914-1" class="page hidden">
         <h2>Challenge 1: Who Informed?</h2>
         <p>Who informed President Raymond Poincaré of the assassination of Archduke Franz Ferdinand?</p>
         <form id="mcq-1914-1">
@@ -35,19 +36,19 @@
         </form>
         <button class="button" onclick="checkMCQ('mcq-1914-1', 'B', 'page-1914-1', 'page-1914-2')">Submit</button>
     </div>
-  <!-- Challenge 2 -->
-<div id="page-1914-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_2_IMAGE_ID');">
-    <h2>Challenge 2: Timeline Puzzle</h2>
-    <p>Rearrange these events in the correct chronological order:</p>
-    <ol id="timeline-1914-2">
-        <li id="item-3" draggable="true" ondragstart="drag(event)">The assassination of Archduke Franz Ferdinand</li>
-        <li id="item-1" draggable="true" ondragstart="drag(event)">Austria issues an ultimatum to Serbia</li>
-        <li id="item-2" draggable="true" ondragstart="drag(event)">Germany invades Belgium</li>
-        <li id="item-4" draggable="true" ondragstart="drag(event)">The Battle of the Marne begins</li>
-    </ol>
-    <div id="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
-    <button class="button" onclick="checkTimelineOrder('timeline-1914-2', ['item-3', 'item-1', 'item-2', 'item-4'], 'page-1914-2', 'page-1914-3')">Submit</button>
-</div>
+
+    <!-- Challenge 2 -->
+    <div id="page-1914-2" class="page hidden">
+        <h2>Challenge 2: Timeline Puzzle</h2>
+        <p>Rearrange these events in the correct chronological order:</p>
+        <ol id="timeline-1914-2">
+            <li id="item-3" draggable="true" ondragstart="drag(event)">The assassination of Archduke Franz Ferdinand</li>
+            <li id="item-1" draggable="true" ondragstart="drag(event)">Austria issues an ultimatum to Serbia</li>
+            <li id="item-2" draggable="true" ondragstart="drag(event)">Germany invades Belgium</li>
+            <li id="item-4" draggable="true" ondragstart="drag(event)">The Battle of the Marne begins</li>
+        </ol>
+        <button class="button" onclick="checkTimelineOrder('timeline-1914-2', ['item-3', 'item-1', 'item-2', 'item-4'], 'page-1914-2', 'page-1914-3')">Submit</button>
+    </div>
 
     <!-- Challenge 3 -->
 <div id="page-1914-3" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_3_IMAGE_ID');">
