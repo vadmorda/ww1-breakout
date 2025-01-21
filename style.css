@@ -248,3 +248,10 @@ body {
     border: 3px solid #e94560;
     border-radius: 10px;
 }
+/* Feedback styling */
+.feedback {
+    font-size: 1.2em;
+    margin-top: 15px;
+    color: #e94560;
+    text-align: center;
+}
