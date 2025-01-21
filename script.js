@@ -1,5 +1,5 @@
- document.addEventListener('DOMContentLoaded', () => {
-    const selectedCountries = [];
+document.addEventListener('DOMContentLoaded', () => {
+    const selectedCountries = []; // Array para almacenar selecciones
    
    
    // Navigate to the next page
@@ -9,14 +9,12 @@
     };  
    
    
-   // Function to navigate between pages
+   // Navegar entre páginas
     window.nextPage = (currentPageId, nextPageId) => {
-        const currentPage = document.getElementById(currentPageId);
-        const nextPage = document.getElementById(nextPageId);
-
-        if (currentPage) currentPage.classList.add('hidden'); // Oculta la página actual
-        if (nextPage) nextPage.classList.remove('hidden'); // Muestra la siguiente página
+        document.getElementById(currentPageId).classList.add('hidden');
+        document.getElementById(nextPageId).classList.remove('hidden');
     };
+
   
   
     // Function to check Multiple Choice Questions
@@ -95,27 +93,30 @@
     };
 });
 
-// Map interaction for Challenge 3
+
+ // Función para manejar clics en las áreas del mapa
     document.querySelectorAll('area').forEach(area => {
         area.addEventListener('click', (event) => {
             const answer = event.target.dataset.answer;
+            const feedback = document.getElementById('map-feedback');
             if (!selectedCountries.includes(answer)) {
                 selectedCountries.push(answer);
-                alert(`Selected: ${event.target.alt}`);
+                feedback.textContent = `Selected: ${event.target.alt}`;
+            } else {
+                feedback.textContent = `Already selected: ${event.target.alt}`;
             }
         });
     });
-// Validate answers for Challenge 3
+
+    // Validar respuestas del mapa
     window.submitMapAnswers = (currentPageId, nextPageId) => {
-        const correctAnswers = ['triple-alliance', 'triple-entente'];
+        const correctAnswers = ['triple-alliance', 'triple-entente']; // Respuestas correctas
         const isCorrect = correctAnswers.every(answer => selectedCountries.includes(answer));
+
         if (isCorrect) {
+            alert('Correct! Moving to the next challenge.');
             nextPage(currentPageId, nextPageId);
         } else {
-            alert('Incorrect! Please try again.');
+            alert('Incorrect! Please review your selections.');
         }
-    };
-});
-        draggedElement = null; // Resetea la variable
-    };
 });
