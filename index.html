@@ -3,321 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Room: World War I</title>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <title>WW 1: Breakout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Global Title -->
-    <div id="global-title">
-        <h1>Escape Room: World War I</h1>
-    </div>
-
-    <!-- PDF Reader -->
-    <div id="pdf-reader">
-        <iframe src="https://drive.google.com/file/d/1zulDmTwGczH3Kt-dmQqAk1QKWxXbBIO5/preview" width="100%" height="100%" allow="autoplay"></iframe>
-    </div>
-
-    <!-- Page Intro -->
-    <div id="page-intro" class="page">
-        <p>Welcome to the World War I Escape Room! Solve puzzles and explore historical events from 1914 to 1915. Click "Start" to begin your journey.</p>
-        <button class="button" onclick="nextPage('page-intro', 'page-1914-1')">Start</button>
-    </div>
-
-    <!-- Challenge 1 -->
-    <div id="page-1914-1" class="page hidden">
-        <h2>Challenge 1: Who Informed?</h2>
-        <p>Who informed President Raymond Poincaré of the assassination of Archduke Franz Ferdinand?</p>
-        <form id="mcq-1914-1">
-            <label><input type="radio" name="mcq" value="A"> A. A cabinet member</label><br>
-            <label><input type="radio" name="mcq" value="B"> B. A messenger from the Ministry of Foreign Affairs</label><br>
-            <label><input type="radio" name="mcq" value="C"> C. The French Prime Minister</label><br>
-            <label><input type="radio" name="mcq" value="D"> D. A military officer</label><br>
-        </form>
-        <button class="button" onclick="checkMCQ('mcq-1914-1', 'B', 'page-1914-1', 'page-1914-2')">Submit</button>
-    </div>
-
-    <!-- Challenge 2 -->
-    <div id="page-1914-2" class="page hidden">
-        <h2>Challenge 2: Timeline Puzzle</h2>
-        <p>Rearrange these events in the correct chronological order:</p>
-        <ol id="timeline-1914-2">
-            <li id="item-3" draggable="true" ondragstart="drag(event)">The assassination of Archduke Franz Ferdinand</li>
-            <li id="item-1" draggable="true" ondragstart="drag(event)">Austria issues an ultimatum to Serbia</li>
-            <li id="item-2" draggable="true" ondragstart="drag(event)">Germany invades Belgium</li>
-            <li id="item-4" draggable="true" ondragstart="drag(event)">The Battle of the Marne begins</li>
-        </ol>
-        <button class="button" onclick="checkTimelineOrder('timeline-1914-2', ['item-3', 'item-1', 'item-2', 'item-4'], 'page-1914-2', 'page-1914-3')">Submit</button>
-    </div>
-
-    <!-- Challenge 3 -->
-<div id="page-1914-3" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_3_IMAGE_ID');">
-    <h2>Challenge 3: Map Identification</h2>
-    <p>On the map, identify members of the Triple Alliance and Triple Entente.</p>
-    <div class="image">
-        <img src="https://drive.google.com/uc?id=1fntNfNiQnpxjPpJXsomKxt79I-1rGBXO" alt="Map of Alliances">
-    </div>
-    <input type="text" id="map-1914-3" class="input-field" placeholder="Your answer">
-    <button class="button" onclick="checkAnswer('map-1914-3', ['germany, austria-hungary, italy; france, russia, britain'], 'page-1914-3', 'page-1914-4')">Submit</button>
-</div>
-
-    <!-- Challenge 4 -->
-    <div id="page-1914-4" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_4_IMAGE_ID');">
-        <h2>Challenge 4: Decode the Message</h2>
-        <p>Decipher this scrambled text: <strong>TGERA ANCIVEOTIR</strong></p>
-        <p>Hint: It’s a victory slogan from 1914 mobilization.</p>
-        <input type="text" id="cipher-1914-4" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('cipher-1914-4', ['the great victory'], 'page-1914-4', 'page-1914-5')">Submit</button>
-    </div>
-
-    <!-- Challenge 5 -->
-    <div id="page-1914-5" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_5_IMAGE_ID');">
-        <h2>Challenge 5: Word Search Puzzle</h2>
-        <p>Find the following terms in the puzzle: Sarajevo, Franz Ferdinand, Triple Alliance, Belgium, Marne.</p>
-        <div class="word-search">
-            <p>Interactive word search to be implemented here.</p>
+    <!-- Página Principal -->
+    <div id="page-intro" class="page active" style="background-image: url('https://drive.google.com/uc?id=15_b0kuH8zKdOYNc_7vGSjsLL7FsOoTed');">
+        <div id="global-title">
+            <h1>WW 1: Breakout</h1>
         </div>
-        <button class="button" onclick="nextPage('page-1914-5', 'page-1914-6')">Next</button>
-    </div>
-
-    <!-- Challenge 6 -->
-    <div id="page-1914-6" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_6_IMAGE_ID');">
-        <h2>Challenge 6: Fill-in-the-Blank</h2>
-        <p>The French strategy heavily relied on the infantry, considered the “______ of battle,” supported by the 75 mm field gun.</p>
-        <input type="text" id="answer-1914-6" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('answer-1914-6', ['queen'], 'page-1914-6', 'page-1914-7')">Submit</button>
-    </div>
-
-    <!-- Challenge 7 -->
-    <div id="page-1914-7" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_7_IMAGE_ID');">
-        <h2>Challenge 7: Multiple Choice Quiz</h2>
-        <p>What country did Germany invade to draw Britain into the war?</p>
-        <form id="mcq-1914-7">
-            <label><input type="radio" name="mcq" value="A"> A. France</label><br>
-            <label><input type="radio" name="mcq" value="B"> B. Belgium</label><br>
-            <label><input type="radio" name="mcq" value="C"> C. Serbia</label><br>
-            <label><input type="radio" name="mcq" value="D"> D. Italy</label><br>
-        </form>
-        <button class="button" onclick="checkMCQ('mcq-1914-7', 'B', 'page-1914-7', 'page-1914-8')">Submit</button>
-    </div>
-
-    <!-- Challenge 8 -->
-    <div id="page-1914-8" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_8_IMAGE_ID');">
-        <h2>Challenge 8: Identify the Strategy</h2>
-        <p>What was the name of Germany’s plan to avoid a two-front war?</p>
-        <input type="text" id="answer-1914-8" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('answer-1914-8', ['schlieffen plan'], 'page-1914-8', 'page-1914-9')">Submit</button>
-    </div>
-  <!-- Challenge 9 -->
-  <div id="page-1914-9" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_9_IMAGE_ID');">
-        <h2>Challenge 9: True or False</h2>
-        <p>Statement: Germany's invasion of Belgium led to Britain declaring war on Germany.</p>
-        <form id="true-false-1914-9">
-            <label><input type="radio" name="true-false" value="true"> True</label><br>
-            <label><input type="radio" name="true-false" value="false"> False</label>
-        </form>
-        <button class="button" onclick="checkMCQ('true-false-1914-9', 'true', 'page-1914-9', 'page-1914-10')">Submit</button>
-    </div>
-  <!-- Challenge 10 -->
-     <div id="page-1914-10" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_10_IMAGE_ID');">
-        <h2>Challenge 10: Map Puzzle</h2>
-        <p>On the map, identify the members of the Triple Alliance.</p>
-        <div class="image">
-            <img src="https://drive.google.com/uc?id=MAP_IMAGE_ID" alt="Map of Europe 1914">
+        <div class="intro-content">
+            <h2>
+                Welcome to the WW1 Breakout! Follow Jacques, a French soldier during the Battle of Verdun in 1916.
+                Jacques must deliver a crucial message to Captain Henri Boudoux to halt a planned offensive against the Germans, who are preparing a deadly trap. 
+                You'll face a series of challenges to help Jacques cross trenches, dodge enemy fire, and complete his mission.
+            </h2>
+            <h1>
+                Experience the Great War through Jacques' eyes and explore the graphic novel "Goddamn this war!"
+                Are you ready to test your knowledge and help Jacques succeed?
+            </h1>
+            <button class="button" onclick="startGame()">Enter War Zone</button>
         </div>
-        <form id="triple-alliance">
-            <label><input type="checkbox" value="germany"> Germany</label><br>
-            <label><input type="checkbox" value="italy"> Italy</label><br>
-            <label><input type="checkbox" value="france"> France</label><br>
-            <label><input type="checkbox" value="austria-hungary"> Austria-Hungary</label><br>
+    </div>
+
+    <!-- Reto 1 -->
+    <div id="challenge-1" class="page hidden" style="background-image: url('https://i.ibb.co/vv1fS6h/war-call-of-duty-p7usbsaaqvm7rqbr.jpg');">
+        <div class="content">
+            <h2>Challenge 1: The Causes of World War I</h2>
+            <p>Watch the video below and answer the questions to proceed.</p>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BXtGneTCMgU" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div id="quiz">
+                <p id="question-text"></p>
+                <div id="answers"></div>
+                <button class="button" id="submit-answer" onclick="checkAnswer()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página de transición después del Reto 1 -->
+    <div id="transition-page" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1UxLa6yAY0UB_2vdIGY-pTECVUZxLgig3');">
+        <h2>Jacques has reached the temporary shelter.</h2>
+        <p>
+            He bravely crossed the cold, flooded trenches filled with soldiers enduring hunger and exhaustion. 
+            Finally, he has reached a small earth-and-wooden shelter where his officer, along with other officials, 
+            is examining topographic maps of the Verdun region south of the Meuse River, identifying the positions 
+            of the Germans in the trenches around Metz. Jacques now awaits further orders and the encrypted document 
+            he must deliver to the frontline trenches closest to the German positions.
+        </p>
+        <button class="button" onclick="nextPage('transition-page', 'reto-2-intro')">Continue with your mission</button>
+    </div>
+
+    <!-- Introducción al Reto 2 -->
+    <div id="reto-2-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+        <h2>1914: From July to December</h2>
+        <p>
+            Jacques recalls the events from July to December 1914. The assassination of Archduke Franz Ferdinand in Sarajevo set off a chain of events, leading to Austria-Hungary's ultimatum to Serbia and eventually the declaration of war. Germany supported Austria-Hungary while France, Russia, and Britain stood together. The war escalated quickly with Germany invading Belgium and advancing into France, but the French stopped them at the Battle of the Marne. By December, the war had settled into a deadly stalemate of trench warfare.
+        </p>
+        <button class="button" onclick="nextPage('reto-2-intro', 'reto-2-1')">Begin the challenge</button>
+    </div>
+
+    <!-- Subretos 1-6 -->
+    <div id="reto-2-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+        <h2>Challenge 1</h2>
+        <p>What event started the chain reaction leading to World War I?</p>
+        <form>
+            <label><input type="radio" name="q1" value="correct"> Assassination of Archduke Franz Ferdinand</label><br>
+            <label><input type="radio" name="q1" value="incorrect"> Invasion of Belgium</label><br>
+            <label><input type="radio" name="q1" value="incorrect"> Treaty of Versailles</label><br>
         </form>
-        <button class="button" onclick="checkMultipleAnswers('triple-alliance', ['germany', 'italy', 'austria-hungary'], 'page-1914-10', 'page-1914-11')">Submit</button>
+        <button class="button" onclick="checkAnswer('q1', 'reto-2-1', 'reto-2-2', 1)">Submit</button>
     </div>
 
-    <div id="page-1914-11" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_11_IMAGE_ID');">
-        <h2>Challenge 11: Cause and Effect</h2>
-        <p>Match the causes to their effects:</p>
-        <ul>
-            <li>Germany's naval expansion → <input type="text" id="effect-11-1" class="input-field" placeholder="Your answer"></li>
-            <li>Assassination of Franz Ferdinand → <input type="text" id="effect-11-2" class="input-field" placeholder="Your answer"></li>
-            <li>Invasion of Belgium → <input type="text" id="effect-11-3" class="input-field" placeholder="Your answer"></li>
-        </ul>
-        <button class="button" onclick="checkAnswers(['effect-11-1', 'effect-11-2', 'effect-11-3'], ['tensions with britain', 'austria’s ultimatum to serbia', 'britain enters the war'], 'page-1914-11', 'page-1914-12')">Submit</button>
-    </div>
+    <!-- Repetir para retos 2-6 -->
 
-    <div id="page-1914-12" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_12_IMAGE_ID');">
-        <h2>Challenge 12: Role-play Scenario</h2>
-        <p>You are a European diplomat in July 1914. What strategy would you suggest to avoid war?</p>
-        <input type="text" id="roleplay-1914-12" class="input-field" placeholder="Your strategy">
-        <button class="button" onclick="checkAnswer('roleplay-1914-12', ['diplomatic negotiations', 'peace talks'], 'page-1914-12', 'page-1914-13')">Submit</button>
-    </div>
-
-    <div id="page-1914-13" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_13_IMAGE_ID');">
-        <h2>Challenge 13: Visual Puzzle</h2>
-        <p>Observe the image of a trench below. What are three hardships soldiers faced here?</p>
-        <div class="image">
-            <img src="https://drive.google.com/uc?id=TRENCH_IMAGE_ID" alt="Trench">
+    <!-- Código final del reto 2 -->
+    <div id="reto-2-code" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+        <h2>Enter the Code</h2>
+        <p>Enter the 6-digit code you collected from each challenge.</p>
+        <div>
+            <input type="number" maxlength="1" id="digit1">
+            <input type="number" maxlength="1" id="digit2">
+            <input type="number" maxlength="1" id="digit3">
+            <input type="number" maxlength="1" id="digit4">
+            <input type="number" maxlength="1" id="digit5">
+            <input type="number" maxlength="1" id="digit6">
         </div>
-        <input type="text" id="trench-hardships-1914-13" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('trench-hardships-1914-13', ['cold, hunger, fear'], 'page-1914-13', 'page-1914-14')">Submit</button>
+        <button class="button" onclick="checkCode('123456', 'reto-2-code', 'transition-2')">Submit Code</button>
     </div>
 
-    <div id="page-1914-14" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_14_IMAGE_ID');">
-        <h2>Challenge 14: Decode the Cipher</h2>
-        <p>Decode this message: "JHQWUDODQFH WRWKH 0DUPH"</p>
-        <p>Hint: It's an Allied movement.</p>
-        <input type="text" id="decode-1914-14" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('decode-1914-14', ['central advance to the marne'], 'page-1914-14', 'page-1914-15')">Submit</button>
-    </div>
-
-    <div id="page-1914-15" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_15_IMAGE_ID');">
-        <h2>Challenge 15: Riddle Time</h2>
-        <p>I’m not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I?</p>
-        <input type="text" id="riddle-1914-15" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('riddle-1914-15', ['fire'], 'page-1914-15', 'page-1914-16')">Submit</button>
-    </div>
-  <div id="page-1914-16" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_16_IMAGE_ID');">
-        <h2>Challenge 16: Hidden Message</h2>
-        <p>Find the hidden word in this riddle:</p>
-        <p><em>"I have keys but no locks. I have space but no room. You can enter but you can’t go outside. What am I?"</em></p>
-        <input type="text" id="hidden-message-1914-16" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('hidden-message-1914-16', ['keyboard'], 'page-1914-16', 'page-1914-17')">Submit</button>
-    </div>
-
-    <div id="page-1914-17" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_17_IMAGE_ID');">
-        <h2>Challenge 17: Code Breaker</h2>
-        <p>Decode this message: <strong>"GFSUI UIF GSPOU MJOF"</strong></p>
-        <p>Hint: Shift each letter backward by one in the alphabet.</p>
-        <input type="text" id="code-breaker-1914-17" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('code-breaker-1914-17', ['front line'], 'page-1914-17', 'page-1914-18')">Submit</button>
-    </div>
-
-    <div id="page-1914-18" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_18_IMAGE_ID');">
-        <h2>Challenge 18: Map Coordinates</h2>
-        <p>Using the map, what coordinates mark the location of Sarajevo, where Archduke Franz Ferdinand was assassinated?</p>
-        <div class="image">
-            <img src="https://drive.google.com/uc?id=MAP_SARAJEVO_IMAGE_ID" alt="Map of Europe 1914">
-        </div>
-        <input type="text" id="coordinates-1914-18" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('coordinates-1914-18', ['43.85, 18.38'], 'page-1914-18', 'page-1914-19')">Submit</button>
-    </div>
-
-    <div id="page-1914-19" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_19_IMAGE_ID');">
-        <h2>Challenge 19: Word Puzzle</h2>
-        <p>Unscramble the letters to find a key term: <strong>"VLTRIPOIY"</strong></p>
-        <input type="text" id="unscramble-1914-19" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('unscramble-1914-19', ['victory'], 'page-1914-19', 'page-1914-20')">Submit</button>
-    </div>
-
-    <div id="page-1914-20" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1914_20_IMAGE_ID');">
-        <h2>Challenge 20: Lock Code</h2>
-        <p>Use the clues to find the 4-digit lock code:</p>
-        <ul>
-            <li>Year World War I started: 1st digit</li>
-            <li>Number of Triple Entente members: 2nd digit</li>
-            <li>Day of Archduke Franz Ferdinand's assassination: Last 2 digits</li>
-        </ul>
-        <input type="text" id="lock-code-1914-20" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('lock-code-1914-20', ['1914'], 'page-1914-20', 'page-1914-21')">Submit</button>
-    </div>
-
-    <!-- Continue adding all previous 20 challenges as shown in the previous examples -->
-
-    <!-- New Challenges Start Here -->
-    
-    <!-- Challenge 21 -->
-    <div id="page-1920-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_1_IMAGE_ID');">
-        <h2>Challenge 21: Hidden Word Puzzle</h2>
-        <p>Decode the hidden word using the following clue:</p>
-        <p><strong>"Each number represents the position of a letter in the word: 8, 9, 19, 20, 15, 18, 25."</strong></p>
-        <input type="text" id="hidden-word-1920-1" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('hidden-word-1920-1', ['history'], 'page-1920-1', 'page-1920-2')">Submit</button>
-    </div>
-
-    <!-- Challenge 22 -->
-    <div id="page-1920-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_2_IMAGE_ID');">
-        <h2>Challenge 22: Secret Message</h2>
-        <p>Decipher this coded message: <strong>"DWWDFN DW GDZQ"</strong></p>
-        <p>Hint: Use a Caesar cipher with a shift of 3.</p>
-        <input type="text" id="cipher-1920-2" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('cipher-1920-2', ['attack at dawn'], 'page-1920-2', 'page-1920-3')">Submit</button>
-    </div>
-
-    <!-- Challenge 23 -->
-    <div id="page-1920-3" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_3_IMAGE_ID');">
-        <h2>Challenge 23: Morse Code</h2>
-        <p>Decode the following Morse code message:</p>
-        <p><strong>.... . .-.. .--.</strong></p>
-        <input type="text" id="morse-1920-3" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('morse-1920-3', ['help'], 'page-1920-3', 'page-1920-4')">Submit</button>
-    </div>
-
-    <!-- Challenge 24 -->
-    <div id="page-1920-4" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_4_IMAGE_ID');">
-        <h2>Challenge 24: Symbol Lock</h2>
-        <p>Enter the correct combination of symbols to open the lock:</p>
-        <p>Clue: 🔑✨🔒</p>
-        <input type="text" id="symbol-lock-1920-4" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('symbol-lock-1920-4', ['key star lock'], 'page-1920-4', 'page-1920-5')">Submit</button>
-    </div>
-
-    <!-- Challenge 25 -->
-    <div id="page-1920-5" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_5_IMAGE_ID');">
-        <h2>Challenge 25: Numeric Cipher</h2>
-        <p>Solve the following: "5-18-5-5-4-15-13" (Hint: A=1, B=2, etc.)</p>
-        <input type="text" id="numeric-cipher-1920-5" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('numeric-cipher-1920-5', ['freedom'], 'page-1920-5', 'page-1920-6')">Submit</button>
-    </div>
-
-    <!-- Challenge 26 -->
-    <div id="page-1920-6" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_6_IMAGE_ID');">
-        <h2>Challenge 26: Word Clues</h2>
-        <p>Find the hidden word using the clues below:</p>
-        <ul>
-            <li>Clue 1: It’s what soldiers fight for.</li>
-            <li>Clue 2: It starts with "L".</li>
-        </ul>
-        <input type="text" id="word-clue-1920-6" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('word-clue-1920-6', ['liberty'], 'page-1920-6', 'page-1920-7')">Submit</button>
-    </div>
-
-    <!-- Challenge 27 -->
-    <div id="page-1920-7" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_7_IMAGE_ID');">
-        <h2>Challenge 27: Code Breaker</h2>
-        <p>Use the numbers below to form a word: 3-15-13-16-1-19-19</p>
-        <input type="text" id="code-breaker-1920-7" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('code-breaker-1920-7', ['compass'], 'page-1920-7', 'page-1920-8')">Submit</button>
-    </div>
-
-    <!-- Challenge 28 -->
-    <div id="page-1920-8" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_8_IMAGE_ID');">
-        <h2>Challenge 28: Riddle Time</h2>
-        <p>I can be cracked, made, told, and played. What am I?</p>
-        <input type="text" id="riddle-1920-8" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('riddle-1920-8', ['joke'], 'page-1920-8', 'page-1920-9')">Submit</button>
-    </div>
-
-    <!-- Challenge 29 -->
-    <div id="page-1920-9" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_9_IMAGE_ID');">
-        <h2>Challenge 29: Word Scramble</h2>
-        <p>Unscramble this word: <strong>NITTOYIR</strong></p>
-        <input type="text" id="word-scramble-1920-9" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('word-scramble-1920-9', ['trinity'], 'page-1920-9', 'page-1920-10')">Submit</button>
-    </div>
-
-    <!-- Challenge 30 -->
-    <div id="page-1920-10" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1920_10_IMAGE_ID');">
-        <h2>Challenge 30: Final Cipher</h2>
-        <p>Decrypt the final code: "WBYLWB"</p>
-        <p>Hint: Reverse alphabet substitution (A=Z, B=Y, etc.)</p>
-        <input type="text" id="final-cipher-1920-10" class="input-field" placeholder="Your answer">
-        <button class="button" onclick="checkAnswer('final-cipher-1920-10', ['david'], 'page-1920-10', 'page-final')">Submit</button>
-    </div>
-
-    <!-- Final Page -->
-    <div id="page-final" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=FINAL_IMAGE_ID');">
-        <h1>Congratulations!</h1>
-        <p>You have successfully completed all 31 challenges! Well done!</p>
+    <!-- Transición al reto 3 -->
+    <div id="transition-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1A2DjljRO9AmQVdHHZN1UeRC3C-_39jus');">
+        <h2>Mission Update</h2>
+        <p>Jacques has left the trench and is now crossing dangerous open fields filled with defensive wire and relentless fire. He must push on to reach his next destination.</p>
+        <button class="button" onclick="nextPage('transition-2', 'reto-3')">Now, continue your mission</button>
     </div>
 
     <script src="script.js"></script>
