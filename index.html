@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WW 1: Breakout</title>
+    <title>WW1: Breakout</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
     <!-- Página Principal -->
     <div id="page-intro" class="page active" style="background-image: url('https://drive.google.com/uc?id=15_b0kuH8zKdOYNc_7vGSjsLL7FsOoTed');">
         <div id="global-title">
-            <h1>WW 1: Breakout</h1>
+            <h1>WW1: Breakout</h1>
         </div>
         <div class="intro-content">
             <h2>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <!-- Página de transición después del Reto 1 -->
+    <!-- Transition Page -->
     <div id="transition-page" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1UxLa6yAY0UB_2vdIGY-pTECVUZxLgig3');">
         <h2>Jacques has reached the temporary shelter.</h2>
         <p>
@@ -56,7 +56,7 @@
         <button class="button" onclick="nextPage('transition-page', 'reto-2-intro')">Continue with your mission</button>
     </div>
 
-    <!-- Introducción al Reto 2 -->
+    <!-- Reto 2 Intro -->
     <div id="reto-2-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
         <h2>1914: From July to December</h2>
         <p>
@@ -65,7 +65,7 @@
         <button class="button" onclick="nextPage('reto-2-intro', 'reto-2-1')">Begin the challenge</button>
     </div>
 
-    <!-- Subretos 1-6 -->
+    <!-- Subretos -->
     <div id="reto-2-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
         <h2>Challenge 1</h2>
         <p>What event started the chain reaction leading to World War I?</p>
@@ -77,9 +77,18 @@
         <button class="button" onclick="checkAnswer('q1', 'reto-2-1', 'reto-2-2', 1)">Submit</button>
     </div>
 
-    <!-- Repetir para retos 2-6 -->
+    <div id="reto-2-6" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+        <h2>Challenge 6</h2>
+        <p>What was the main form of combat in December 1914?</p>
+        <form>
+            <label><input type="radio" name="q6" value="correct"> Trench warfare</label><br>
+            <label><input type="radio" name="q6" value="incorrect"> Naval battles</label><br>
+            <label><input type="radio" name="q6" value="incorrect"> Guerrilla warfare</label><br>
+        </form>
+        <button class="button" onclick="checkAnswer('q6', 'reto-2-6', 'reto-2-code')">Submit</button>
+    </div>
 
-    <!-- Código final del reto 2 -->
+    <!-- Code Entry Page -->
     <div id="reto-2-code" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
         <h2>Enter the Code</h2>
         <p>Enter the 6-digit code you collected from each challenge.</p>
@@ -94,13 +103,12 @@
         <button class="button" onclick="checkCode('123456', 'reto-2-code', 'transition-2')">Submit Code</button>
     </div>
 
-    <!-- Transición al reto 3 -->
+    <!-- Transition after Reto 2 -->
     <div id="transition-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1A2DjljRO9AmQVdHHZN1UeRC3C-_39jus');">
         <h2>Mission Update</h2>
         <p>Jacques has left the trench and is now crossing dangerous open fields filled with defensive wire and relentless fire. He must push on to reach his next destination.</p>
         <button class="button" onclick="nextPage('transition-2', 'reto-3')">Now, continue your mission</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
