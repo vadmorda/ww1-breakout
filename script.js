@@ -244,7 +244,5 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.getElement
 
-    // Load the first question
-    loadQuestion();
 });
 
