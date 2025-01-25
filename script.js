@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             targetPage.classList.remove('hidden');
         }
     };
-
+  
     // Start Game: Go to the first challenge
     window.startGame = () => {
         setActivePage('challenge-1');
@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize: Show only the first page on load
     setActivePage('page-intro');
+  
+      // Ensure "nextPage" works for the button
+    window.nextPage = (currentPageId, nextPageId) => {
+        setActivePage(nextPageId);
+    };
+});
 
     // Quiz Questions for Challenge 1
     const questions = [
