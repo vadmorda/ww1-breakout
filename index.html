@@ -41,7 +41,7 @@
       <div id="quiz">
         <p id="question-text"></p>
         <div id="answers"></div>
-        <button class="button" id="submit-answer" onclick="checkAnswer()">Submit</button>
+        <button class="button hidden" id="next-question" onclick="loadNextQuestion()">Next</button>
       </div>
     </div>
   </div>
@@ -58,6 +58,7 @@
     </p>
     <button class="button" onclick="nextPage('transition-page', 'reto-2-intro')">Continue with your mission</button>
   </div>
+
   <!-- Nuevo Reto 2 Intro -->
   <div id="reto-2-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1-MH7k8zVMWrE4UPbPfqRJg1iD8ZxhzJN');">
     <h2>Challenge 2: A World Divided</h2>
@@ -84,69 +85,24 @@
     </div>
     <div id="questions-container" class="hidden">
       <p id="question-text"></p>
-      <input type="text" id="answer-input" placeholder="Type your answer here">
-      <button class="button" id="submit-answer" onclick="submitAnswer()">Submit</button>
+      <div id="answers-container"></div>
+      <p id="error-message" class="hidden">Incorrect! Try again.</p>
+      <button class="button hidden" id="next-button" onclick="loadNextQuestion()">Next</button>
     </div>
   </div>
-  <!-- Subretos -->
-  <div id="reto-2-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-    <h2>Challenge 1</h2>
-    <p>What event started the chain reaction leading to World War I?</p>
-    <form>
-      <label><input type="radio" name="q1" value="correct"> Assassination of Archduke Franz Ferdinand</label><br>
-      <label><input type="radio" name="q1" value="incorrect"> Invasion of Belgium</label><br>
-      <label><input type="radio" name="q1" value="incorrect"> Treaty of Versailles</label><br>
-    </form>
-    <button class="button" onclick="checkAnswer('q1', 'reto-2-1', 'reto-2-2', 1)">Submit</button>
+
+  <!-- Reto 3 Intro -->
+  <div id="reto-3-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+    <h2>1914: The movements war</h2>
+    <p>
+      Jacques recalls the events from July to December 1914. The assassination of Archduke Franz Ferdinand in Sarajevo set off a chain of events, leading to Austria-Hungary's ultimatum to Serbia and eventually the declaration of war. Germany supported Austria-Hungary while France, Russia, and Britain stood together. The war escalated quickly with Germany invading Belgium and advancing into France, but the French stopped them at the Battle of the Marne. By December, the war had settled into a deadly stalemate of trench warfare.
+    </p>
+    <button class="button" onclick="nextPage('reto-3-intro', 'reto-3-questions')">Begin the challenge</button>
   </div>
 
-  <div id="reto-2-6" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-    <h2>Challenge 6</h2>
-    <p>What was the main form of combat in December 1914?</p>
-    <form>
-      <label><input type="radio" name="q6" value="correct"> Trench warfare</label><br>
-      <label><input type="radio" name="q6" value="incorrect"> Naval battles</label><br>
-      <label><input type="radio" name="q6" value="incorrect"> Guerrilla warfare</label><br>
-    </form>
-    <button class="button" onclick="checkAnswer('q6', 'reto-2-6', 'reto-2-code')">Submit</button>
-  </div>
-
-  <!-- Code Entry Page -->
-  <div id="reto-2-code" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-    <h2>Enter the Code</h2>
-    <p>Enter the 6-digit code you collected from each challenge.</p>
-    <div>
-      <input type="number" maxlength="1" id="digit1">
-      <input type="number" maxlength="1" id="digit2">
-      <input type="number" maxlength="1" id="digit3">
-      <input type="number" maxlength="1" id="digit4">
-      <input type="number" maxlength="1" id="digit5">
-      <input type="number" maxlength="1" id="digit6">
-    </div>
-    <button class="button" onclick="checkCode('123456', 'reto-2-code', 'transition-2')">Submit Code</button>
-  </div>
-
-  <!-- Transition after Reto 2 -->
-  <div id="transition-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1A2DjljRO9AmQVdHHZN1UeRC3C-_39jus');">
-    <h2>Mission Update</h2>
-    <p>Jacques has left the trench and is now crossing dangerous open fields filled with defensive wire and relentless fire. He must push on to reach his next destination.</p>
-    <button class="button" onclick="nextPage('transition-2', 'reto-3')">Now, continue your mission</button>
-  </div>
-  <script src="script.js"></script>
-</body>
-
-</html>
-
-<!-- Reto 3 Intro -->
-<div id="reto-2-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-  <h2>1914: The movements war</h2>
-  <p>
-    Jacques recalls the events from July to December 1914. The assassination of Archduke Franz Ferdinand in Sarajevo set off a chain of events, leading to Austria-Hungary's ultimatum to Serbia and eventually the declaration of war. Germany supported Austria-Hungary while France, Russia, and Britain stood together. The war escalated quickly with Germany invading Belgium and advancing into France, but the French stopped them at the Battle of the Marne. By December, the war had settled into a deadly stalemate of trench warfare.
-  </p>
-  <button class="button" onclick="nextPage('reto-2-intro', 'reto-2-1')">Begin the challenge</button>
-</div>
-
-<div class="content">
+  <!-- Reto 3 Questions -->
+  <div id="reto-3-questions" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1C262bVuKgWIsHarafdLYBzqcCv2eHW6D');">
+ <div class="content">
   <p>Please read the summary and watch the video carefully before proceeding to the questions.</p>
   <p>
     Summary: 1914 - The Beginning of the Great War
@@ -174,31 +130,26 @@
 
     The Legacy of 1914
     By December 1914, it was evident that the war would be long and devastating. The initial offensive strategies of both sides had failed, and the conflict turned into a war of attrition, where victory would depend on endurance and resource mobilization.
-  </p>
-  <div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/PbwH1ZBnYds" frameborder="0" allowfullscreen></iframe>
+  </p>   
+    <div id="question-container">
+      <h2 id="question-title">Question</h2>
+      <p id="question-text"></p>
+      <div id="answers-container"></div>
+      <p id="error-message" class="hidden">Incorrect! Try again.</p>
+      <button class="button hidden" id="next-button" onclick="loadNextQuestion()">Next</button>
+    </div>
   </div>
-  <button class="button" onclick="nextPage('reto-3-intro', 'reto-3-questions')">Start Questions</button>
-</div>
-</div>
 
-<!-- Reto 3 Questions -->
-<div id="reto-3-questions" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1C262bVuKgWIsHarafdLYBzqcCv2eHW6D');">
-  <div id="question-container">
-    <h2 id="question-title">Question</h2>
-    <p id="question-text"></p>
-    <div id="answers-container"></div>
-    <p id="error-message" class="hidden">Incorrect! Try again.</p>
-    <button class="button hidden" id="next-button" onclick="loadNextQuestion()">Next</button>
+  <!-- Transition After Reto 3 -->
+  <div id="reto-3-transition" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1q-EaAgUPGkE3EeNvAnfzsb6vbbvyATU9');">
+    <h2>Mission Update</h2>
+    <p>
+      Jacques has successfully retrieved the encrypted message. Prepare to advance to the front line trenches for the next phase of the mission.
+    </p>
+    <button class="button" onclick="nextPage('reto-3-transition', 'reto-4-intro')">Continue in the War Zone</button>
   </div>
-</div>
 
-<!-- Transition After Reto 3 -->
-<div id="reto-3-transition" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1q-EaAgUPGkE3EeNvAnfzsb6vbbvyATU9');">
-  <h2>Mission Update</h2>
-  <p>
-    Jacques has successfully retrieved the encrypted message. Prepare to advance to the front line trenches for the next phase of the mission.
-  </p>
-  <button class="button" onclick="nextPage('reto-3-transition', 'reto-4-intro')">Continue in the War Zone</button>
-</div>
+  <script src="script.js"></script>
+</body>
+
 </html>
