@@ -1,115 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WW1: Breakout</title>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WW1: Breakout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-   
-    <!-- Página Principal -->
-    <div id="page-intro" class="page active" style="background-image: url('https://drive.google.com/uc?id=15_b0kuH8zKdOYNc_7vGSjsLL7FsOoTed');">
-        <div id="global-title">
-            <h1>WW1: Breakout</h1>
-        </div>
-        <div class="intro-content">
-            <h2>
-                Welcome to the WW1 Breakout! Follow Jacques, a French soldier during the Battle of Verdun in 1916.
-                Jacques must deliver a crucial message to Captain Henri Boudoux to halt a planned offensive against the Germans, who are preparing a deadly trap. 
-                You'll face a series of challenges to help Jacques cross trenches, dodge enemy fire, and complete his mission.
-            </h2>
-            <h1>
-                Experience the Great War through Jacques' eyes and explore the graphic novel "Goddamn this war!"
-                Are you ready to test your knowledge and help Jacques succeed?
-            </h1>
-            <button class="button" onclick="startGame()">Enter War Zone</button>
-        </div>
-    </div>
 
-    <!-- Reto 1 -->
-    <div id="challenge-1" class="page hidden" style="background-image: url('https://i.ibb.co/vv1fS6h/war-call-of-duty-p7usbsaaqvm7rqbr.jpg');">
-        <div class="content">
-            <h2>Challenge 1: The Causes of World War I</h2>
-            <p>Watch the video below and answer the questions to proceed.</p>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/BXtGneTCMgU" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div id="quiz">
-                <p id="question-text"></p>
-                <div id="answers"></div>
-                <button class="button" id="submit-answer" onclick="checkAnswer()">Submit</button>
-            </div>
-        </div>
+  <!-- Página Principal -->
+  <div id="page-intro" class="page active" style="background-image: url('https://drive.google.com/uc?id=15_b0kuH8zKdOYNc_7vGSjsLL7FsOoTed');">
+    <div id="global-title">
+      <h1>WW1: Breakout</h1>
     </div>
+    <div class="intro-content">
+      <h2>
+        Welcome to the WW1 Breakout! Follow Jacques, a French soldier during the Battle of Verdun in 1916.
+        Jacques must deliver a crucial message to Captain Henri Boudoux to halt a planned offensive against the Germans, who are preparing a deadly trap.
+        You'll face a series of challenges to help Jacques cross trenches, dodge enemy fire, and complete his mission.
+      </h2>
+      <h1>
+        Experience the Great War through Jacques' eyes and explore the graphic novel "Goddamn this war!"
+        Are you ready to test your knowledge and help Jacques succeed?
+      </h1>
+      <button class="button" onclick="startGame()">Enter War Zone</button>
+    </div>
+  </div>
 
-    <!-- Transition Page -->
-    <div id="transition-page" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1UxLa6yAY0UB_2vdIGY-pTECVUZxLgig3');">
-        <h2>Jacques has reached the temporary shelter.</h2>
-        <p>
-            He bravely crossed the cold, flooded trenches filled with soldiers enduring hunger and exhaustion. 
-            Finally, he has reached a small earth-and-wooden shelter where his officer, along with other officials, 
-            is examining topographic maps of the Verdun region south of the Meuse River, identifying the positions 
-            of the Germans in the trenches around Metz. Jacques now awaits further orders and the encrypted document 
-            he must deliver to the frontline trenches closest to the German positions.
-        </p>
-        <button class="button" onclick="nextPage('transition-page', 'reto-2-intro')">Continue with your mission</button>
+  <!-- Reto 1 -->
+  <div id="challenge-1" class="page hidden" style="background-image: url('https://i.ibb.co/vv1fS6h/war-call-of-duty-p7usbsaaqvm7rqbr.jpg');">
+    <div class="content">
+      <h2>Challenge 1: The Causes of World War I</h2>
+      <p>Watch the video below and answer the questions to proceed.</p>
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BXtGneTCMgU" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div id="quiz">
+        <p id="question-text"></p>
+        <div id="answers"></div>
+        <button class="button" id="submit-answer" onclick="checkAnswer()">Submit</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Reto 2 Intro -->
-    <div id="reto-2-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-        <h2>1914: From July to December</h2>
-        <p>
-            Jacques recalls the events from July to December 1914. The assassination of Archduke Franz Ferdinand in Sarajevo set off a chain of events, leading to Austria-Hungary's ultimatum to Serbia and eventually the declaration of war. Germany supported Austria-Hungary while France, Russia, and Britain stood together. The war escalated quickly with Germany invading Belgium and advancing into France, but the French stopped them at the Battle of the Marne. By December, the war had settled into a deadly stalemate of trench warfare.
-        </p>
-        <button class="button" onclick="nextPage('reto-2-intro', 'reto-2-1')">Begin the challenge</button>
-    </div>
+  <!-- Transition Page -->
+  <div id="transition-page" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1UxLa6yAY0UB_2vdIGY-pTECVUZxLgig3');">
+    <h2>Jacques has reached the temporary shelter.</h2>
+    <p>
+      He bravely crossed the cold, flooded trenches filled with soldiers enduring hunger and exhaustion.
+      Finally, he has reached a small earth-and-wooden shelter where his officer, along with other officials,
+      is examining topographic maps of the Verdun region south of the Meuse River, identifying the positions
+      of the Germans in the trenches around Metz. Jacques now awaits further orders and the encrypted document
+      he must deliver to the frontline trenches closest to the German positions.
+    </p>
+    <button class="button" onclick="nextPage('transition-page', 'reto-2-intro')">Continue with your mission</button>
+  </div>
+  <!-- Nuevo Reto 2 Intro -->
+  <div id="reto-2-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1-MH7k8zVMWrE4UPbPfqRJg1iD8ZxhzJN');">
+    <h2>Challenge 2: A World Divided</h2>
+    <p>
+      Jacques takes a moment to recall how alliances shifted from before the war to the current year, 1916.
+      He reflects on the alliances that once sought to maintain a balance of power, but now have expanded the
+      space of conflict. The Triple Entente has grown stronger, and new powers have joined the war effort on
+      both sides, turning Europe into a vast battleground. As he studies the map of the current fronts, he
+      laments how the war has dragged more nations into its deadly grasp.
+    </p>
+    <p>
+      "How could it have come to this?" Jacques wonders. "What once were treaties of defense now fuel the
+      relentless expansion of war."
+    </p>
+    <button class="button" onclick="nextPage('reto-2-intro', 'reto-2')">Study the map</button>
+  </div>
 
-    <!-- Subretos -->
-    <div id="reto-2-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-        <h2>Challenge 1</h2>
-        <p>What event started the chain reaction leading to World War I?</p>
-        <form>
-            <label><input type="radio" name="q1" value="correct"> Assassination of Archduke Franz Ferdinand</label><br>
-            <label><input type="radio" name="q1" value="incorrect"> Invasion of Belgium</label><br>
-            <label><input type="radio" name="q1" value="incorrect"> Treaty of Versailles</label><br>
-        </form>
-        <button class="button" onclick="checkAnswer('q1', 'reto-2-1', 'reto-2-2', 1)">Submit</button>
+  <!-- Nuevo Reto 2 -->
+  <div id="reto-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1-MH7k8zVMWrE4UPbPfqRJg1iD8ZxhzJN');">
+    <h2>Challenge 2</h2>
+    <div id="gif-container">
+      <img src="https://drive.google.com/uc?id=1A3O0qayZvs8AuLO1lFZqRQ2s2MPShGDQ" alt="World War I Map">
+      <p>Observe the map and its legend for two minutes.</p>
     </div>
+    <div id="questions-container" class="hidden">
+      <p id="question-text"></p>
+      <input type="text" id="answer-input" placeholder="Type your answer here">
+      <button class="button" id="submit-answer" onclick="submitAnswer()">Submit</button>
+    </div>
+  </div>
+  <!-- Subretos -->
+  <div id="reto-2-1" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+    <h2>Challenge 1</h2>
+    <p>What event started the chain reaction leading to World War I?</p>
+    <form>
+      <label><input type="radio" name="q1" value="correct"> Assassination of Archduke Franz Ferdinand</label><br>
+      <label><input type="radio" name="q1" value="incorrect"> Invasion of Belgium</label><br>
+      <label><input type="radio" name="q1" value="incorrect"> Treaty of Versailles</label><br>
+    </form>
+    <button class="button" onclick="checkAnswer('q1', 'reto-2-1', 'reto-2-2', 1)">Submit</button>
+  </div>
 
-    <div id="reto-2-6" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-        <h2>Challenge 6</h2>
-        <p>What was the main form of combat in December 1914?</p>
-        <form>
-            <label><input type="radio" name="q6" value="correct"> Trench warfare</label><br>
-            <label><input type="radio" name="q6" value="incorrect"> Naval battles</label><br>
-            <label><input type="radio" name="q6" value="incorrect"> Guerrilla warfare</label><br>
-        </form>
-        <button class="button" onclick="checkAnswer('q6', 'reto-2-6', 'reto-2-code')">Submit</button>
-    </div>
+  <div id="reto-2-6" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+    <h2>Challenge 6</h2>
+    <p>What was the main form of combat in December 1914?</p>
+    <form>
+      <label><input type="radio" name="q6" value="correct"> Trench warfare</label><br>
+      <label><input type="radio" name="q6" value="incorrect"> Naval battles</label><br>
+      <label><input type="radio" name="q6" value="incorrect"> Guerrilla warfare</label><br>
+    </form>
+    <button class="button" onclick="checkAnswer('q6', 'reto-2-6', 'reto-2-code')">Submit</button>
+  </div>
 
-    <!-- Code Entry Page -->
-    <div id="reto-2-code" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
-        <h2>Enter the Code</h2>
-        <p>Enter the 6-digit code you collected from each challenge.</p>
-        <div>
-            <input type="number" maxlength="1" id="digit1">
-            <input type="number" maxlength="1" id="digit2">
-            <input type="number" maxlength="1" id="digit3">
-            <input type="number" maxlength="1" id="digit4">
-            <input type="number" maxlength="1" id="digit5">
-            <input type="number" maxlength="1" id="digit6">
-        </div>
-        <button class="button" onclick="checkCode('123456', 'reto-2-code', 'transition-2')">Submit Code</button>
+  <!-- Code Entry Page -->
+  <div id="reto-2-code" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+    <h2>Enter the Code</h2>
+    <p>Enter the 6-digit code you collected from each challenge.</p>
+    <div>
+      <input type="number" maxlength="1" id="digit1">
+      <input type="number" maxlength="1" id="digit2">
+      <input type="number" maxlength="1" id="digit3">
+      <input type="number" maxlength="1" id="digit4">
+      <input type="number" maxlength="1" id="digit5">
+      <input type="number" maxlength="1" id="digit6">
     </div>
+    <button class="button" onclick="checkCode('123456', 'reto-2-code', 'transition-2')">Submit Code</button>
+  </div>
 
-    <!-- Transition after Reto 2 -->
-    <div id="transition-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1A2DjljRO9AmQVdHHZN1UeRC3C-_39jus');">
-        <h2>Mission Update</h2>
-        <p>Jacques has left the trench and is now crossing dangerous open fields filled with defensive wire and relentless fire. He must push on to reach his next destination.</p>
-        <button class="button" onclick="nextPage('transition-2', 'reto-3')">Now, continue your mission</button>
-    </div>
-    <script src="script.js"></script>
+  <!-- Transition after Reto 2 -->
+  <div id="transition-2" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1A2DjljRO9AmQVdHHZN1UeRC3C-_39jus');">
+    <h2>Mission Update</h2>
+    <p>Jacques has left the trench and is now crossing dangerous open fields filled with defensive wire and relentless fire. He must push on to reach his next destination.</p>
+    <button class="button" onclick="nextPage('transition-2', 'reto-3')">Now, continue your mission</button>
+  </div>
+  <script src="script.js"></script>
 </body>
+
+</html>
+
+<!-- Reto 3 Intro -->
+<div id="reto-2-intro" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1uLMYKL5jRQD4TcmhgFIhasfCnoQkk42W');">
+  <h2>1914: The movements war</h2>
+  <p>
+    Jacques recalls the events from July to December 1914. The assassination of Archduke Franz Ferdinand in Sarajevo set off a chain of events, leading to Austria-Hungary's ultimatum to Serbia and eventually the declaration of war. Germany supported Austria-Hungary while France, Russia, and Britain stood together. The war escalated quickly with Germany invading Belgium and advancing into France, but the French stopped them at the Battle of the Marne. By December, the war had settled into a deadly stalemate of trench warfare.
+  </p>
+  <button class="button" onclick="nextPage('reto-2-intro', 'reto-2-1')">Begin the challenge</button>
+</div>
+
+<div class="content">
+  <p>Please read the summary and watch the video carefully before proceeding to the questions.</p>
+  <p>
+    Summary: 1914 - The Beginning of the Great War
+    On June 28, 1914, the assassination of Archduke Franz Ferdinand, heir to the Austro-Hungarian throne, and his wife in Sarajevo triggered a series of events that led to the outbreak of World War I. Initially, the event went almost unnoticed, but it soon became the spark for a global conflict. Long-standing tensions among Europe’s great powers, fueled by colonial, economic, and military rivalries, found an outlet in this incident.
+
+    Europe was divided into two main blocs: the Triple Alliance (Germany, Austria-Hungary, and Italy) and the Triple Entente (France, Russia, and Britain). For years, diplomatic efforts had managed to defuse tensions, but the Sarajevo assassination disrupted the fragile balance. Austria-Hungary blamed Serbia for the attack and issued a harsh ultimatum, which Serbia partially rejected. On July 28, 1914, Austria-Hungary declared war on Serbia.
+
+    Russia, allied with Serbia and a defender of Slavic nations in the Balkans, mobilized its troops against Austria-Hungary. Germany, allied with Austria-Hungary, perceived Russian mobilization as a direct threat and declared war on Russia on August 1, 1914, and on France, Russia’s ally, on August 3. Germany’s military strategy, known as the Schlieffen Plan, aimed to quickly defeat France by invading through neutral Belgium. This violation of Belgian neutrality prompted Britain, Belgium’s guarantor, to declare war on Germany on August 4.
+
+    The Outbreak of War
+    Within weeks, Europe’s major powers were at war. The scale of mobilization was massive: over 10 million men were called to arms in the early months. Any hope of a quick war was soon dashed. Initial battles, such as the Battle of the Frontiers, resulted in enormous casualties and revealed the grim reality of a prolonged and costly conflict.
+
+    Germany’s invasion of Belgium encountered unexpected resistance, delaying its advance towards France. Despite this, German forces reached the outskirts of Paris in early September. However, in the Battle of the Marne (September 6–13), Franco-British forces halted the German advance, marking the beginning of trench warfare. Both sides dug defensive lines stretching from the North Sea to Switzerland, creating a static and deadly Western Front.
+
+    The Eastern Front and the Balkans
+    While trench warfare dominated the Western Front, battles on the Eastern Front were more mobile. Germany achieved major victories over Russia at Tannenberg and the Masurian Lakes, inflicting heavy casualties. In contrast, Austria-Hungary faced humiliating defeats against Russia and Serbia, highlighting its military weaknesses and dependence on Germany.
+
+    The Global Impact and New Players
+    In November 1914, the Ottoman Empire joined the Central Powers, opening new fronts in the Caucasus against Russia and in the Middle East against Britain. European colonial possessions also became battlegrounds. Japan, allied with Britain, declared war on Germany and seized German colonies in the Pacific. In Africa, both the Allies and Central Powers fought over colonial territories.
+
+    Life at the Front and at Home
+    The war brought suffering not only to the battlefield but also to civilian populations. Economies were transformed to support the war effort. In Germany, Britain’s naval blockade caused severe shortages of food and essential goods, affecting civilians deeply.
+
+    Conditions at the front were harrowing. Soldiers lived in trenches plagued by rats, mud, and constant artillery bombardment. Casualties were staggering; by the end of 1914, 350,000 French, 250,000 Germans, and hundreds of thousands from other nations had died.
+
+    The Legacy of 1914
+    By December 1914, it was evident that the war would be long and devastating. The initial offensive strategies of both sides had failed, and the conflict turned into a war of attrition, where victory would depend on endurance and resource mobilization.
+  </p>
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/PbwH1ZBnYds" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <button class="button" onclick="nextPage('reto-3-intro', 'reto-3-questions')">Start Questions</button>
+</div>
+</div>
+
+<!-- Reto 3 Questions -->
+<div id="reto-3-questions" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1C262bVuKgWIsHarafdLYBzqcCv2eHW6D');">
+  <div id="question-container">
+    <h2 id="question-title">Question</h2>
+    <p id="question-text"></p>
+    <div id="answers-container"></div>
+    <p id="error-message" class="hidden">Incorrect! Try again.</p>
+    <button class="button hidden" id="next-button" onclick="loadNextQuestion()">Next</button>
+  </div>
+</div>
+
+<!-- Transition After Reto 3 -->
+<div id="reto-3-transition" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1q-EaAgUPGkE3EeNvAnfzsb6vbbvyATU9');">
+  <h2>Mission Update</h2>
+  <p>
+    Jacques has successfully retrieved the encrypted message. Prepare to advance to the front line trenches for the next phase of the mission.
+  </p>
+  <button class="button" onclick="nextPage('reto-3-transition', 'reto-4-intro')">Continue in the War Zone</button>
+</div>
 </html>
