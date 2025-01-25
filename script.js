@@ -99,13 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentQuestionIndex = 0;
 
+    // Function to shuffle answers randomly
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
+
+    // Load quiz question
     const loadQuiz = () => {
         const questionElement = document.getElementById('question-text');
         const answersElement = document.getElementById('answers');
         questionElement.textContent = questions[currentQuestionIndex].question;
         answersElement.innerHTML = '';
 
-        questions[currentQuestionIndex].answers.forEach(answer => {
+        // Shuffle answers before displaying
+        const shuffledAnswers = shuffleArray([...questions[currentQuestionIndex].answers]);
+        shuffledAnswers.forEach(answer => {
             const button = document.createElement('button');
             button.textContent = answer;
             button.classList.add('answer-option');
@@ -114,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Handle answer selection
     const selectAnswer = (answer) => {
         if (answer === questions[currentQuestionIndex].correct) {
             currentQuestionIndex++;
