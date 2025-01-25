@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pages = document.querySelectorAll(".page");
 
-  // Helper function to set the active page
-  const setActivePage = (pageId) => {
-    pages.forEach((page) => page.classList.add("hidden"));
+// Helper function to set the active page
+const setActivePage = (pageId) => {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.add('hidden'));
     const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-      targetPage.classList.remove("hidden");
-    }
-  };
+    if (targetPage) targetPage.classList.remove('hidden');
+};
 
   // Initialize: Show only the first page on load
   setActivePage("page-intro");
