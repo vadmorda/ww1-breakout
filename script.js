@@ -19,10 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setActivePage('page-intro');
   
       // Ensure "nextPage" works for the button
-    window.nextPage = (currentPageId, nextPageId) => {
-        setActivePage(nextPageId);
-    };
-});
+window.nextPage = (currentPageId, nextPageId) => {
+    const currentPage = document.getElementById(currentPageId);
+    const nextPage = document.getElementById(nextPageId);
+
+    if (currentPage) currentPage.classList.add('hidden'); // Oculta la página actual
+    if (nextPage) nextPage.classList.remove('hidden');    // Muestra la siguiente página
+};
 
     // Quiz Questions for Challenge 1
     const questions = [
