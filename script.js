@@ -10,10 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializar: Mostrar solo la primera página al cargar
   setActivePage("page-intro");
 
+  // ------------------------ Navegación ------------------------
+
   // Función para iniciar el juego
   window.startGame = () => {
-    setActivePage("challenge-1");
-    loadReto1Question(); // Iniciar las preguntas del reto 1
+    setActivePage("challenge-1"); // Ir al reto 1
+    loadReto1Question(); // Iniciar preguntas del reto 1
   };
 
   // Navegación entre páginas
@@ -26,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ------------------------ Reto 1 ------------------------
+
   const reto1Questions = [
     {
       question: "What policy did Great Britain adopt in 1889?",
@@ -76,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Función para validar la respuesta seleccionada
+  // Función para validar la respuesta seleccionada en Reto 1
   const checkReto1Answer = (answer) => {
     if (answer === reto1Questions[currentReto1Index].correct) {
       currentReto1Index++;
@@ -91,79 +94,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Llamar a la función de carga inicial de preguntas al iniciar el reto 1
-  document.getElementById("challenge-1").addEventListener("load", () => {
-    loadReto1Question();
-  });
-
   // ------------------------ Reto 2 ------------------------
- const reto1Questions = [
+
+  const reto2Questions = [
     {
-        question: "What policy did Great Britain adopt in 1889?",
-        answers: ["Two Power Standard", "Naval Expansion Act", "Empire Building"],
-        correct: "Two Power Standard",
+      question: "How were the Triple Alliance countries known in 1915?",
+      correctAnswer: "centralpowers",
+      type: "text",
     },
     {
-        question: "Who was the German Admiral in 1897?",
-        answers: ["Alfred von Tirpitz", "Otto von Bismarck", "Wilhelm II"],
-        correct: "Alfred von Tirpitz",
+      question: "How were the Triple Entente countries known in 1915?",
+      correctAnswer: ["allies", "theallies"],
+      type: "text",
     },
     {
-        question: "Which alliance included Germany, Austria, and Italy?",
-        answers: ["Triple Alliance", "Triple Entente", "Dual Alliance"],
-        correct: "Triple Alliance",
+      question: "Which European power left the Triple Alliance before the war started?",
+      correctAnswer: "italy",
+      type: "text",
     },
     {
-        question: "What sparked the beginning of World War I?",
-        answers: ["Franz Ferdinand's assassination", "Naval race", "Alsace-Lorraine conflict"],
-        correct: "Franz Ferdinand's assassination",
+      question: "Which two eastern powers joined the Central Powers during the war?",
+      correctAnswer: "bulgariaandottomanempire",
+      type: "multiple",
+      options: ["Bulgaria and Ottoman Empire", "Romania and Portugal", "Serbia and Greece"],
     },
-];
+  ];
 
-let currentReto1Index = 0;
-  / Cargar la primera pregunta
-const loadReto1Question = () => {
-    const questionElement = document.getElementById("question-text");
-    const answersElement = document.getElementById("answers");
-    questionElement.textContent = reto1Questions[currentReto1Index].question;
-    answersElement.innerHTML = ""; // Limpiar respuestas anteriores
+  let currentReto2Index = 0;
 
-    reto1Questions[currentReto1Index].answers.forEach((answer) => {
-        const button = document.createElement("button");
-        button.textContent = answer;
-        button.classList.add("answer-option");
-        button.onclick = () => checkReto1Answer(answer);
-        answersElement.appendChild(button);
-    });
-};
-
-// Validar respuesta
-const checkReto1Answer = (answer) => {
-    if (answer === reto1Questions[currentReto1Index].correct) {
-        currentReto1Index++;
-        if (currentReto1Index < reto1Questions.length) {
-            loadReto1Question();
-        } else {
-            alert("You have completed Challenge 1!");
-            nextPage("challenge-1", "transition-page");
-        }
-    } else {
-        alert("Incorrect! Try again.");
-    }
-};
-
-// Iniciar el reto 1 desde la página inicial
-window.startGame = () => {
-    setActivePage("challenge-1");
-    loadReto1Question();
-};
- 
+  // Función para iniciar Reto 2
   const startReto2 = () => {
     setTimeout(() => {
       document.getElementById("gif-container").classList.add("hidden");
       document.getElementById("questions-container").classList.remove("hidden");
       loadReto2Question();
-    }, 120000); // 2 minutes
+    }, 120000); // 2 minutos
   };
 
   const loadReto2Question = () => {
@@ -235,9 +200,8 @@ window.startGame = () => {
     }
   };
 
-  document.getElementById("reto-2").addEventListener("load", startReto2);
-
   // ------------------------ Reto 3 ------------------------
+
   const reto3Questions = [
     { question: "Who was assassinated to spark World War I?", answer: "archduke franz ferdinand" },
     { question: "Which nations formed the Triple Entente?", answer: ["france", "russia", "britain"] },
@@ -271,10 +235,4 @@ window.startGame = () => {
       document.getElementById("error-message").classList.remove("hidden");
     }
   };
-
-  document.getElementById("reto-3-questions").addEventListener("load", loadReto3Question);
 });
- console.log("El script se cargó correctamente.");
-});
-
-
