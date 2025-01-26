@@ -7,18 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetPage) targetPage.classList.remove("hidden");
   };
 
-  // Inicializar: Mostrar solo la primera página al cargar
+  // Inicializar: Mostrar solo la página inicial al cargar
   setActivePage("page-intro");
 
   // ------------------------ Navegación ------------------------
 
   // Función para iniciar el juego
   window.startGame = () => {
-    setActivePage("challenge-1"); // Ir al reto 1
+    setActivePage("challenge-1"); // Mover a la página del reto 1
     loadReto1Question(); // Iniciar preguntas del reto 1
   };
 
-  // Navegación entre páginas
+  // Función para mover entre páginas
   window.nextPage = (currentPageId, nextPageId) => {
     const currentPage = document.getElementById(currentPageId);
     const nextPage = document.getElementById(nextPageId);
