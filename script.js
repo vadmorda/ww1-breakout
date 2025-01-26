@@ -1,138 +1,97 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Función para cambiar entre páginas
-  const setActivePage = (pageId) => {
-    const pages = document.querySelectorAll(".page");
-    pages.forEach((page) => page.classList.remove("active")); // Ocultar todas las páginas
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) targetPage.classList.add("active"); // Mostrar la página seleccionada
-  };
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Special Elite", "Roboto", sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
 
-  // Asignar el evento al botón de inicio
-  const startGameBtn = document.getElementById("start-game-btn");
-  if (startGameBtn) {
-    startGameBtn.addEventListener("click", () => {
-      setActivePage("challenge-1");
-      loadReto1Question(); // Iniciar las preguntas del reto 1
-    });
+/* Animations */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
   }
+  50% {
+    opacity: 0.5;
+  }
+}
 
-  // ------------------------ Reto 1 ------------------------
-  const reto1Questions = [
-    {
-        question: "What policy did Great Britain adopt in 1889?",
-        answers: ["Two Power Standard", "Naval Expansion Act", "Empire Building"],
-        correct: "Two Power Standard",
-    },
-    {
-        question: "Who was the German Admiral in 1897?",
-        answers: ["Alfred von Tirpitz", "Otto von Bismarck", "Wilhelm II"],
-        correct: "Alfred von Tirpitz",
-    },
-    {
-        question: "Which alliance included Germany, Austria, and Italy?",
-        answers: ["Triple Alliance", "Triple Entente", "Dual Alliance"],
-        correct: "Triple Alliance",
-    },
-    {
-        question: "What sparked the beginning of World War I?",
-        answers: ["Franz Ferdinand's assassination", "Naval race", "Alsace-Lorraine conflict"],
-        correct: "Franz Ferdinand's assassination",
-    },
-    {
-        question: "Which country declared war on Serbia after the assassination of Archduke Franz Ferdinand?",
-        answers: ["Austria-Hungary", "Germany", "Russia"],
-        correct: "Austria-Hungary",
-    },
-    {
-        question: "What was the primary reason for the naval race between Great Britain and Germany?",
-        answers: ["To secure trade routes", "To demonstrate military dominance", "To prepare for war"],
-        correct: "To demonstrate military dominance",
-    },
-    {
-        question: "What was the purpose of the Schlieffen Plan?",
-        answers: ["To avoid a two-front war", "To strengthen alliances", "To expand naval power"],
-        correct: "To avoid a two-front war",
-    },
-    {
-        question: "What role did alliances play in the escalation of World War I?",
-        answers: ["They increased tensions and spread the conflict", "They prevented conflicts from occurring", "They neutralized key threats"],
-        correct: "They increased tensions and spread the conflict",
-    },
-    {
-        question: "Which event led to Great Britain entering World War I?",
-        answers: ["The invasion of Belgium", "The assassination of Franz Ferdinand", "Germany's naval expansion"],
-        correct: "The invasion of Belgium",
-    },
-    {
-        question: "What term describes the belief in building and maintaining a strong military?",
-        answers: ["Militarism", "Imperialism", "Nationalism"],
-        correct: "Militarism",
-    },
-    {
-        question: "What is the name of the alliance formed by France, Russia, and Britain?",
-        answers: ["Triple Entente", "Triple Alliance", "Dual Alliance"],
-        correct: "Triple Entente",
-    },
-    {
-        question: "What was the immediate consequence of Franz Ferdinand's assassination?",
-        answers: ["Austria-Hungary issued an ultimatum to Serbia", "Russia declared war on Austria-Hungary", "Germany invaded France"],
-        correct: "Austria-Hungary issued an ultimatum to Serbia",
-    },
-    {
-        question: "Why did Germany seek colonies before World War I?",
-        answers: ["To gain a 'place in the sun'", "To avoid alliances", "To strengthen the Triple Entente"],
-        correct: "To gain a 'place in the sun'",
-    },
-    {
-        question: "Which colonial crisis involved Germany challenging French control?",
-        answers: ["The Moroccan Crisis", "The Balkans Dispute", "The Berlin Conference"],
-        correct: "The Moroccan Crisis",
-    },
-    {
-        question: "What was the Serbian nationalist group involved in the assassination of Franz Ferdinand?",
-        answers: ["The Black Hand", "The Red Guard", "The Serbian Front"],
-        correct: "The Black Hand",
-    },
-  ];
+/* Title Styling */
+#global-title h1 {
+  font-size: 5em;
+  color: #e94560;
+  animation: blink 1.5s infinite;
+  text-shadow: 0 0 10px #e94560, 0 0 20px #ff5f7e;
+  margin-top: 20px;
+}
 
-  let currentReto1Index = 0;
+/* Intro Content */
+.intro-content h2,
+.intro-content h1 {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border: 2px solid #e94560;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 800px;
+}
 
-  // Función para cargar preguntas del reto 1
-  const loadReto1Question = () => {
-    const questionElement = document.getElementById("question-text");
-    const answersElement = document.getElementById("answers");
+.intro-content h1 {
+  margin-top: 20px;
+  font-size: 2em;
+}
 
-    if (!questionElement || !answersElement) {
-      console.error("No se encontraron los elementos HTML necesarios para el reto 1.");
-      return;
-    }
+.intro-content .button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #e94560;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5em;
+  cursor: pointer;
+  text-align: center;
+}
 
-    // Cargar pregunta actual
-    questionElement.textContent = reto1Questions[currentReto1Index].question;
-    answersElement.innerHTML = ""; // Limpiar respuestas anteriores
+.intro-content .button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #e94560;
+}
 
-    // Crear botones para las respuestas
-    reto1Questions[currentReto1Index].answers.forEach((answer) => {
-      const button = document.createElement("button");
-      button.textContent = answer;
-      button.classList.add("answer-option");
-      button.onclick = () => checkReto1Answer(answer);
-      answersElement.appendChild(button);
-    });
-  };
+/* Quiz */
+#quiz {
+  margin: 20px auto;
+  text-align: center;
+}
 
-  // Validar respuesta seleccionada
-  const checkReto1Answer = (answer) => {
-    if (answer === reto1Questions[currentReto1Index].correct) {
-      currentReto1Index++;
-      if (currentReto1Index < reto1Questions.length) {
-        loadReto1Question(); // Cargar la siguiente pregunta
-      } else {
-        alert("You have completed Challenge 1!");
-        // Aquí puedes definir la transición a la siguiente página
-      }
-    } else {
-      alert("Incorrect! Try again.");
-    }
-  };
-});
+#answers button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#answers button:hover {
+  background-color: #e94560;
+}
+
+/* Hidden Page Handling */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
