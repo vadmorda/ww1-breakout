@@ -8,10 +8,10 @@ const setActivePage = (pageId) => {
     const targetPage = document.getElementById(pageId);
     if (targetPage) targetPage.classList.remove('hidden');
 };
-
-window.startGame = () => {
+  window.startGame = () => {
     setActivePage("challenge-1");
 };
+
   // Navigation function for buttons
   window.nextPage = (currentPageId, nextPageId) => {
     const currentPage = document.getElementById(currentPageId);
