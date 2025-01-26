@@ -211,3 +211,62 @@ body {
 #code-entry p {
   margin-top: 10px;
 }
+/* Reto 3 */
+#challenge-3 {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #e94560;
+  border-radius: 10px;
+  color: white;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+#challenge-3 h2 {
+  font-size: 2.5em;
+  color: #e94560;
+  margin-bottom: 15px;
+}
+
+#quiz-3-container {
+  margin: 20px auto;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border: 2px solid #e94560;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+#answers-3-container button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#answers-3-container button:hover {
+  background-color: #e94560;
+}
+
+/* Página Final */
+#final-page {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #e94560;
+  border-radius: 10px;
+  color: white;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+#final-page h2 {
+  font-size: 2.5em;
+  color: #e94560;
+  margin-bottom: 15px;
+}
