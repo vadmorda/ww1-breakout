@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   // Función para establecer la página activa
   const setActivePage = (pageId) => {
@@ -255,3 +254,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 });
+
