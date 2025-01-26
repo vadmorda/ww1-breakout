@@ -4,29 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WW1: Breakout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Página de Inicio -->
+  <!-- Página Inicial -->
   <div id="page-intro" class="page active" style="background-image: url('https://drive.google.com/uc?id=15_b0kuH8zKdOYNc_7vGSjsLL7FsOoTed');">
-    <h1>WW1: Breakout</h1>
-    <p>
-      Welcome to the WW1 Breakout! Follow Jacques, a French soldier during the Battle of Verdun in 1916. 
-      Jacques must deliver a crucial message to Captain Henri Boudoux to halt a planned offensive against the Germans, 
-      who are preparing a deadly trap.
-    </p>
-    <button id="start-game-btn" class="button">Enter War Zone</button>
+    <div id="global-title">
+      <h1>WW1: Breakout</h1>
+    </div>
+    <div class="intro-content">
+      <h2>
+        Welcome to the WW1 Breakout! Follow Jacques, a French soldier during the Battle of Verdun in 1916.
+        Jacques must deliver a crucial message to Captain Henri Boudoux to halt a planned offensive against the Germans, who are preparing a deadly trap.
+      </h2>
+      <h1>Are you ready to test your knowledge and help Jacques succeed?</h1>
+      <button class="button" onclick="startGame()">Enter War Zone</button>
+    </div>
   </div>
 
-  <!-- Página del Reto 1 -->
+  <!-- Reto 1 -->
   <div id="challenge-1" class="page hidden">
-    <h1>Challenge 1: The Causes of World War I</h1>
+    <h2>Challenge 1: The Causes of World War I</h2>
     <p>Watch the video below and answer the questions to proceed.</p>
     <div class="video-container">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/BXtGneTCMgU" frameborder="0" allowfullscreen></iframe>
     </div>
     <div id="quiz">
-      <p id="question-text">Question will appear here</p>
+      <p id="question-text"></p>
       <div id="answers"></div>
     </div>
   </div>
