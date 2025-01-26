@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ------------------------ Reto 1 ------------------------
-
   const reto1Questions = [
     {
       question: "What policy did Great Britain adopt in 1889?",
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentReto1Index = 0;
 
-  // Función para cargar las preguntas del reto 1
+  // Función para cargar preguntas del reto 1
   const loadReto1Question = () => {
     const questionElement = document.getElementById("question-text");
     const answersElement = document.getElementById("answers");
@@ -77,21 +76,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Función para validar la respuesta seleccionada en Reto 1
+  // Validar respuesta del reto 1
   const checkReto1Answer = (answer) => {
     if (answer === reto1Questions[currentReto1Index].correct) {
       currentReto1Index++;
       if (currentReto1Index < reto1Questions.length) {
-        loadReto1Question(); // Cargar la siguiente pregunta
+        loadReto1Question();
       } else {
         alert("You have completed Challenge 1!");
-        nextPage("challenge-1", "transition-page"); // Ir a la página de transición
+        setActivePage("transition-page"); // Ir a la página de transición
       }
     } else {
       alert("Incorrect! Try again.");
     }
   };
-
+});
   // ------------------------ Reto 2 ------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const startReto2 = () => {
