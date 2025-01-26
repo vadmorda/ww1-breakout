@@ -36,6 +36,29 @@
     </div>
   </div>
 
+  <!-- Página de Transición -->
+  <div id="transition-page" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1UxLa6yAY0UB_2vdIGY-pTECVUZxLgig3');">
+    <h2>Mission Update</h2>
+    <p>
+      Jacques has successfully reached his official within his trench. Prepare for the next challenge!
+    </p>
+    <button id="to-challenge-2" class="button">Proceed to Challenge 2</button>
+  </div>
+
+  <!-- Challenge 2 -->
+  <div id="challenge-2" class="page hidden" style="background-image: url('https://i.ibb.co/vv1fS6h/war-map-background.jpg');">
+    <div id="map-container">
+      <h2>Observe the map carefully</h2>
+      <img src="https://drive.google.com/uc?id=1A3O0qayZvs8AuLO1lFZqRQ2s2MPShGDQ" alt="World War I Map" style="max-width: 100%; border-radius: 10px;" />
+      <button class="button" id="start-challenge-2" onclick="startChallenge2()">Start Questions</button>
+    </div>
+    <div id="questions-container-2" class="hidden">
+      <h2 id="question-text-2"></h2>
+      <div id="answers-container-2"></div>
+      <button class="button hidden" id="next-button-2" onclick="loadNextQuestion2()">Next</button>
+      <p id="error-message-2" class="hidden" style="color: red;">Incorrect! Try again.</p>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
