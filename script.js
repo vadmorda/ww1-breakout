@@ -9,12 +9,12 @@ const setActivePage = (pageId) => {
     if (targetPage) targetPage.classList.remove('hidden');
 };
  
-  
   // Initialize: Show only the first page on load
   setActivePage("page-intro");
-  
-
-
+    
+  window.startGame = () => {
+    setActivePage("challenge-1");
+};
   
   // Navigation function for buttons
   window.nextPage = (currentPageId, nextPageId) => {
