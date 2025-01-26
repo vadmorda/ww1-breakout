@@ -274,5 +274,7 @@ window.startGame = () => {
 
   document.getElementById("reto-3-questions").addEventListener("load", loadReto3Question);
 });
+ console.log("El script se cargó correctamente.");
+});
 
 
