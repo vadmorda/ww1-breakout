@@ -96,47 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------------ Reto 2 ------------------------
 
-  const reto2Questions = [
-    {
-      question: "How were the Triple Alliance countries known in 1915?",
-      correctAnswer: "centralpowers",
-      type: "text",
-    },
-    {
-      question: "How were the Triple Entente countries known in 1915?",
-      correctAnswer: ["allies", "theallies"],
-      type: "text",
-    },
-    {
-      question: "Which European power left the Triple Alliance before the war started?",
-      correctAnswer: "italy",
-      type: "text",
-    },
-    {
-      question: "Which two eastern powers joined the Central Powers during the war?",
-      correctAnswer: "bulgariaandottomanempire",
-      type: "multiple",
-      options: ["Bulgaria and Ottoman Empire", "Romania and Portugal", "Serbia and Greece"],
-    },
-  ];
-
-  let currentReto2Index = 0;
-
-  // Función para iniciar Reto 2
-  
   const startReto2 = () => {
-    // Mostrar el mapa y desactivar las preguntas al principio
     const gifContainer = document.getElementById("gif-container");
     const questionsContainer = document.getElementById("questions-container");
 
+    // Asegurar que el contenedor del mapa se muestra inicialmente
     gifContainer.classList.remove("hidden");
     questionsContainer.classList.add("hidden");
 
-    // Temporizador de dos minutos
+    // Temporizador de dos minutos para observar el mapa
     setTimeout(() => {
       gifContainer.classList.add("hidden"); // Ocultar el mapa
       questionsContainer.classList.remove("hidden"); // Mostrar las preguntas
-      loadReto2Question(); // Cargar la primera pregunta
+      loadReto2Question(); // Cargar la primera pregunta del reto 2
     }, 120000); // 120000 milisegundos = 2 minutos
   };
 
@@ -172,10 +144,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const errorMessage = document.getElementById("error-message");
     const nextButton = document.getElementById("next-button");
 
+    if (!questionText || !answersContainer) {
+      console.error("Faltan elementos HTML para mostrar las preguntas del reto 2.");
+      return;
+    }
+
     const currentQuestion = reto2Questions[currentReto2Index];
 
     questionText.textContent = currentQuestion.question;
-    answersContainer.innerHTML = "";
+    answersContainer.innerHTML = ""; // Limpiar respuestas anteriores
     errorMessage.classList.add("hidden");
     nextButton.classList.add("hidden");
 
@@ -235,6 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Iniciar el reto 2 al cargar la página correspondiente
   document.getElementById("reto-2").addEventListener("load", startReto2);
 });
 
