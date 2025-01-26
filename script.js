@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ------------------------ Reto 2 ------------------------
-
+document.addEventListener("DOMContentLoaded", () => {
   const startReto2 = () => {
     const gifContainer = document.getElementById("gif-container");
     const questionsContainer = document.getElementById("questions-container");
@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 120000); // 120000 milisegundos = 2 minutos
   };
 
+  // Definir preguntas del reto 2
   const reto2Questions = [
     {
       question: "How were the Triple Alliance countries known in 1915?",
@@ -136,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentReto2Index = 0;
 
+  // Cargar pregunta actual del reto 2
   const loadReto2Question = () => {
     const questionText = document.getElementById("question-text");
     const answersContainer = document.getElementById("answers-container");
@@ -176,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Validar respuestas de texto
   const checkReto2TextAnswer = () => {
     const userAnswer = document.getElementById("user-answer").value.trim().toLowerCase().replace(/\s+/g, "");
     const correctAnswer = reto2Questions[currentReto2Index].correctAnswer;
@@ -190,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Validar respuestas de opción múltiple
   const checkReto2MultipleChoice = (selected) => {
     const correctAnswer = reto2Questions[currentReto2Index].correctAnswer;
 
@@ -200,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Navegar entre preguntas del reto 2
   window.loadNextQuestion = () => {
     currentReto2Index++;
     if (currentReto2Index < reto2Questions.length) {
@@ -213,6 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Iniciar el reto 2 al cargar la página correspondiente
   document.getElementById("reto-2").addEventListener("load", startReto2);
 });
+
 
   // ------------------------ Reto 3 ------------------------
 
