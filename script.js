@@ -123,13 +123,48 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentReto2Index = 0;
 
   // Función para iniciar Reto 2
+  
   const startReto2 = () => {
+    // Mostrar el mapa y desactivar las preguntas al principio
+    const gifContainer = document.getElementById("gif-container");
+    const questionsContainer = document.getElementById("questions-container");
+
+    gifContainer.classList.remove("hidden");
+    questionsContainer.classList.add("hidden");
+
+    // Temporizador de dos minutos
     setTimeout(() => {
-      document.getElementById("gif-container").classList.add("hidden");
-      document.getElementById("questions-container").classList.remove("hidden");
-      loadReto2Question();
-    }, 120000); // 2 minutos
+      gifContainer.classList.add("hidden"); // Ocultar el mapa
+      questionsContainer.classList.remove("hidden"); // Mostrar las preguntas
+      loadReto2Question(); // Cargar la primera pregunta
+    }, 120000); // 120000 milisegundos = 2 minutos
   };
+
+  const reto2Questions = [
+    {
+      question: "How were the Triple Alliance countries known in 1915?",
+      correctAnswer: "centralpowers",
+      type: "text",
+    },
+    {
+      question: "How were the Triple Entente countries known in 1915?",
+      correctAnswer: ["allies", "theallies"],
+      type: "text",
+    },
+    {
+      question: "Which European power left the Triple Alliance before the war started?",
+      correctAnswer: "italy",
+      type: "text",
+    },
+    {
+      question: "Which two eastern powers joined the Central Powers during the war?",
+      correctAnswer: "bulgariaandottomanempire",
+      type: "multiple",
+      options: ["Bulgaria and Ottoman Empire", "Romania and Portugal", "Serbia and Greece"],
+    },
+  ];
+
+  let currentReto2Index = 0;
 
   const loadReto2Question = () => {
     const questionText = document.getElementById("question-text");
@@ -199,6 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
       nextPage("reto-2", "reto-3-intro");
     }
   };
+
+  document.getElementById("reto-2").addEventListener("load", startReto2);
+});
 
   // ------------------------ Reto 3 ------------------------
 
