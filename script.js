@@ -9,14 +9,6 @@ const setActivePage = (pageId) => {
     if (targetPage) targetPage.classList.remove('hidden');
 };
 
-
-const setActivePage = (pageId) => {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.add('hidden'));
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) targetPage.classList.remove('hidden');
-};
-
 window.startGame = () => {
     setActivePage("challenge-1");
 };
