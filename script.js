@@ -8,10 +8,12 @@ const setActivePage = (pageId) => {
     const targetPage = document.getElementById(pageId);
     if (targetPage) targetPage.classList.remove('hidden');
 };
-
   // Initialize: Show only the first page on load
   setActivePage("page-intro");
-
+// Function to start the game (choose one version)
+window.startGame = () => {
+    setActivePage('challenge-1'); // Versión con setActivePage
+};
   // Navigation function for buttons
   window.nextPage = (currentPageId, nextPageId) => {
     const currentPage = document.getElementById(currentPageId);
