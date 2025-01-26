@@ -13,15 +13,6 @@ body {
 }
 
 /* Animations */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-10px);
-  }
-}
-
 @keyframes blink {
   0%, 100% {
     opacity: 1;
@@ -31,27 +22,13 @@ body {
   }
 }
 
-/* Global Title */
-#global-title {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  text-align: center;
-  z-index: 1000;
-  padding: 10px 20px;
-  border-radius: 10px;
-  animation: float 2s infinite alternate;
-}
-
+/* Title Styling */
 #global-title h1 {
-  margin: 0;
   font-size: 5em;
-  font-family: "Special Elite", "Roboto", sans-serif;
   color: #e94560;
   animation: blink 1.5s infinite;
-  text-shadow: 0 0 10px #e94560, 0 0 20px #e94560, 0 0 30px #ff5f7e;
+  text-shadow: 0 0 10px #e94560, 0 0 20px #ff5f7e;
+  margin-top: 20px;
 }
 
 /* Intro Content */
@@ -68,11 +45,12 @@ body {
 
 .intro-content h1 {
   margin-top: 20px;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 .intro-content .button {
   margin-top: 20px;
+  display: inline-block;
   padding: 15px 30px;
   background-color: #e94560;
   color: white;
@@ -80,51 +58,12 @@ body {
   border-radius: 8px;
   font-size: 1.5em;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: center;
 }
 
 .intro-content .button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #e94560, 0 0 25px #e94560;
-}
-
-/* Pages */
-.page {
-  display: none;
-  padding: 20px;
-}
-
-.page.active {
-  display: block;
-}
-
-/* Buttons */
-.button {
-  padding: 15px 30px;
-  background-color: #e94560;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px #e94560;
-}
-
-/* Video Container */
-.video-container {
-  margin: 20px auto;
-  text-align: center;
-}
-
-.video-container iframe {
-  border: none;
-  border-radius: 8px;
+  box-shadow: 0 0 15px #e94560;
 }
 
 /* Quiz */
@@ -142,25 +81,17 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 #answers button:hover {
   background-color: #e94560;
-  color: white;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  #global-title h1 {
-    font-size: 3em;
-  }
-  .intro-content h2,
-  .intro-content h1 {
-    font-size: 1.5em;
-  }
-  .button {
-    font-size: 1.2em;
-    padding: 10px 20px;
-  }
+/* Hidden Page Handling */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
 }
