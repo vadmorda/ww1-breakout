@@ -1,21 +1,21 @@
+
 document.addEventListener("DOMContentLoaded", () => {
-   // Función para establecer la página activa
-   const setActivePage = (pageId) => {
-       const pages = document.querySelectorAll(".page");
-       pages.forEach((page) => page.classList.add("hidden"));
-       const targetPage = document.getElementById(pageId);
-       if (targetPage) targetPage.classList.remove("hidden");
-   };
+  // Función para establecer la página activa
+  const setActivePage = (pageId) => {
+    const pages = document.querySelectorAll(".page");
+    pages.forEach((page) => page.classList.add("hidden"));
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) targetPage.classList.remove("hidden");
+  };
 
-   // Función para iniciar el juego
-   window.startGame = () => {
-       setActivePage("challenge-1"); // Cambiar a la página del reto 1
-       loadReto1Question(); // Iniciar las preguntas del reto 1
-   };
+  // Inicializar: Mostrar solo la primera página al cargar
+  setActivePage("page-intro");
 
-   // Inicializar: Mostrar solo la página intro al cargar
-   setActivePage("page-intro");
-});
+  // Función global para iniciar el juego
+  window.startGame = () => {
+    setActivePage("challenge-1"); // Cambiar a la página del reto 1
+    loadReto1Question(); // Cargar preguntas del reto 1
+  };
   // Navegación entre páginas
   window.nextPage = (currentPageId, nextPageId) => {
     const currentPage = document.getElementById(currentPageId);
