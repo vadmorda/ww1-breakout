@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetPage) targetPage.classList.remove("hidden");
   };
 
-  // Inicializar: Mostrar solo la página inicial al cargar
+  // Inicializar: Mostrar solo la primera página al cargar
   setActivePage("page-intro");
 
-  // ------------------------ Navegación ------------------------
+    // ------------------------ Navegación ------------------------
 
   // Función para iniciar el juego
   window.startGame = () => {
