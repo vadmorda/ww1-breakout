@@ -10,15 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializar: Mostrar solo la primera página al cargar
   setActivePage("page-intro");
 
-    // ------------------------ Navegación ------------------------
-
   // Función para iniciar el juego
   window.startGame = () => {
-    setActivePage("challenge-1"); // Mover a la página del reto 1
-    loadReto1Question(); // Iniciar preguntas del reto 1
+    setActivePage("challenge-1");
+    loadReto1Question();
   };
 
-  // Función para mover entre páginas
+  // Navegación entre páginas
   window.nextPage = (currentPageId, nextPageId) => {
     const currentPage = document.getElementById(currentPageId);
     const nextPage = document.getElementById(nextPageId);
