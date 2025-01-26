@@ -1,28 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const pages = document.querySelectorAll(".page");
-
-// Helper function to set the active page
-const setActivePage = (pageId) => {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.add('hidden'));
+  // Función para establecer la página activa
+  const setActivePage = (pageId) => {
+    const pages = document.querySelectorAll(".page");
+    pages.forEach((page) => page.classList.add("hidden"));
     const targetPage = document.getElementById(pageId);
-    if (targetPage) targetPage.classList.remove('hidden');
-};
- 
-  // Initialize: Show only the first page on load
+    if (targetPage) targetPage.classList.remove("hidden");
+  };
+
+  // Inicializar: Mostrar solo la primera página al cargar
   setActivePage("page-intro");
-    
+
+  // Función para iniciar el juego
   window.startGame = () => {
     setActivePage("challenge-1");
-};
-  
-  // Navigation function for buttons
+    loadReto1Question(); // Iniciar las preguntas del reto 1
+  };
+
+  // Navegación entre páginas
   window.nextPage = (currentPageId, nextPageId) => {
     const currentPage = document.getElementById(currentPageId);
     const nextPage = document.getElementById(nextPageId);
 
-    if (currentPage) currentPage.classList.add("hidden"); // Hide the current page
-    if (nextPage) nextPage.classList.remove("hidden"); // Show the next page
+    if (currentPage) currentPage.classList.add("hidden");
+    if (nextPage) nextPage.classList.remove("hidden");
   };
 
   // ------------------------ Reto 1 ------------------------
@@ -51,36 +51,50 @@ const setActivePage = (pageId) => {
 
   let currentReto1Index = 0;
 
+  // Función para cargar las preguntas del reto 1
   const loadReto1Question = () => {
     const questionElement = document.getElementById("question-text");
     const answersElement = document.getElementById("answers");
-    questionElement.textContent = reto1Questions[currentReto1Index].question;
-    answersElement.innerHTML = "";
 
+    // Verifica que existan los elementos HTML
+    if (!questionElement || !answersElement) {
+      console.error("No se encontraron los elementos para mostrar las preguntas del reto 1.");
+      return;
+    }
+
+    // Mostrar la pregunta actual
+    questionElement.textContent = reto1Questions[currentReto1Index].question;
+    answersElement.innerHTML = ""; // Limpiar respuestas anteriores
+
+    // Crear botones para cada respuesta
     reto1Questions[currentReto1Index].answers.forEach((answer) => {
       const button = document.createElement("button");
       button.textContent = answer;
       button.classList.add("answer-option");
-      button.onclick = () => checkReto1Answer(answer);
+      button.onclick = () => checkReto1Answer(answer); // Validar respuesta
       answersElement.appendChild(button);
     });
   };
 
+  // Función para validar la respuesta seleccionada
   const checkReto1Answer = (answer) => {
     if (answer === reto1Questions[currentReto1Index].correct) {
       currentReto1Index++;
       if (currentReto1Index < reto1Questions.length) {
-        loadReto1Question();
+        loadReto1Question(); // Cargar la siguiente pregunta
       } else {
         alert("You have completed Challenge 1!");
-        nextPage("challenge-1", "transition-page");
+        nextPage("challenge-1", "transition-page"); // Ir a la página de transición
       }
     } else {
       alert("Incorrect! Try again.");
     }
   };
 
-  document.getElementById("challenge-1").addEventListener("load", loadReto1Question);
+  // Llamar a la función de carga inicial de preguntas al iniciar el reto 1
+  document.getElementById("challenge-1").addEventListener("load", () => {
+    loadReto1Question();
+  });
 
   // ------------------------ Reto 2 ------------------------
  const reto1Questions = [
