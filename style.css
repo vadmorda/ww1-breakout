@@ -14,7 +14,8 @@ body {
 
 /* Animations */
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -22,11 +23,20 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  #global-title h1 {
+    font-size: 3em;
+  }
+  .intro-content h2,
+  .intro-content h1 {
+    font-size: 1em;
+  }
+}
+
 /* Utility Classes */
 .hidden {
   display: none;
 }
-visibility: hidden;
 
 /* Title Styling */
 #global-title h1 {
@@ -107,7 +117,7 @@ visibility: hidden;
 }
 
 /* Page Handling */
-.page {
+.page.hidden {
   display: none;
 }
 
@@ -115,8 +125,13 @@ visibility: hidden;
   display: block;
 }
 
+iframe {
+    border: none; /* Sin borde */
+}
+
 /* Quiz */
-#quiz, #questions-container-2 {
+#quiz,
+#questions-container-2 {
   margin: 20px auto;
   text-align: center;
   background: rgba(0, 0, 0, 0.8);
@@ -194,7 +209,7 @@ visibility: hidden;
   display: inline-block;
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 8px;
@@ -205,7 +220,7 @@ visibility: hidden;
 
 #transition-to-challenge-3 .button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #4CAF50, 0 0 25px #4CAF50;
+  box-shadow: 0 0 15px #4caf50, 0 0 25px #4caf50;
 }
 
 #code-error-message,
@@ -249,7 +264,6 @@ visibility: hidden;
   border-radius: 5px;
   cursor: pointer;
 }
-
 #answers-3-container button:hover {
   background-color: #e94560;
 }
@@ -271,4 +285,3 @@ visibility: hidden;
   color: #e94560;
   margin-bottom: 15px;
 }
-
