@@ -14,8 +14,7 @@ body {
 
 /* Animations */
 @keyframes blink {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
@@ -117,7 +116,7 @@ body {
 }
 
 /* Page Handling */
-.page.hidden {
+.page {
   display: none;
 }
 
@@ -125,13 +124,8 @@ body {
   display: block;
 }
 
-iframe {
-    border: none; /* Sin borde */
-}
-
 /* Quiz */
-#quiz,
-#questions-container-2 {
+#quiz, #questions-container-2 {
   margin: 20px auto;
   text-align: center;
   background: rgba(0, 0, 0, 0.8);
@@ -209,7 +203,7 @@ iframe {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 8px;
@@ -220,7 +214,7 @@ iframe {
 
 #transition-to-challenge-3 .button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #4caf50, 0 0 25px #4caf50;
+  box-shadow: 0 0 15px #4CAF50, 0 0 25px #4CAF50;
 }
 
 #code-error-message,
