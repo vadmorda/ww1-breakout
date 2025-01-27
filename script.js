@@ -2,19 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const pages = document.querySelectorAll(".page");
 
   // Función para cambiar la página activa
-  const setActivePage = (pageId) => {
-    pages.forEach((page) => page.classList.remove("active"));
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-      targetPage.classList.add("active");
-    }
-  };
-
-  // Botón de inicio del juego
-  document.getElementById("start-game").onclick = () => {
-    setActivePage("challenge-1");
-    loadReto1Question();
-  };
+   const setActivePage = (pageId) => {
+  pages.forEach((page) => page.classList.remove("active"));
+  const targetPage = document.getElementById(pageId);
+  if (targetPage) {
+    targetPage.classList.add("active");
+    console.log(`Page "${pageId}" is now active.`);
+  } else {
+    console.error(`Page with ID "${pageId}" not found.`);
+  }
+};
+document.getElementById("start-game").onclick = () => {
+  console.log("Start Game button clicked");
+  setActivePage("challenge-1");
+  loadReto1Question();
+};
 
   // Lista de códigos válidos
   let validCodes = [
@@ -41,18 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const validateCode = (inputCode) => validCodes.includes(inputCode);
 
   // Manejo del botón de validación de código en la página inicial
-  document.getElementById("code-verify").addEventListener("click", () => {
-    const codeInput = document.getElementById("code-input").value.trim();
-    const errorElement = document.getElementById("code-error");
-    if (validateCode(codeInput)) {
-      errorElement.classList.add("hidden");
-      alert("Code accepted. Proceeding to Challenge 3...");
-      setActivePage("challenge-3");
-    } else {
-      errorElement.classList.remove("hidden");
-    }
-  });
+document.getElementById("verify-code").addEventListener("click", () => {
+  const codeInput = document.getElementById("access-code").value.trim();
+  const errorElement = document.getElementById("code-error-message");
 
+  if (validateCode(codeInput)) {
+    errorElement.classList.add("hidden");
+    console.log("Code validated. Proceeding to Challenge 3.");
+    setActivePage("challenge-3");
+    loadReto3Question(); // Cargar preguntas
+  } else {
+    errorElement.classList.remove("hidden");
+    console.log("Invalid code.");
+  }
+});
   // Manejo del botón de validación de código en la transición al Reto 3
   document.getElementById("verify-code").addEventListener("click", () => {
     const codeInput = document.getElementById("access-code").value.trim();
@@ -174,9 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
       correct: "Otto von Bismarck"
     }
   ];
-
   let currentReto1Index = 0;
-
   const loadReto1Question = () => {
     const questionElement = document.getElementById("question-text");
     const answersElement = document.getElementById("answers");
@@ -548,9 +550,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   let currentReto3Index = 0;
-   console.log("Loading question index:", currentReto3Index);
+  console.log("Current Index:", currentReto3Index, "Total Questions:", reto3Questions.length);
 
   const loadReto3Question = () => {
+  console.log("Loading Reto 3 Question...");
   const questionText = document.getElementById("question-3-text");
   const answersContainer = document.getElementById("answers-3-container");
   const errorMessage = document.getElementById("error-3-message");
@@ -581,11 +584,8 @@ if (currentReto3Index >= reto3Questions.length) {
     button.onclick = () => checkReto3Answer(answer);
     answersContainer.appendChild(button);
   });
+      console.log("Reto 3 Question loaded:", currentQuestion.question);
 };
-  console.log("Question loaded:", currentQuestion.question);
-};
-  
-  
 const checkReto3Answer = (selectedAnswer) => {
   const currentQuestion = reto3Questions[currentReto3Index];
   const errorMessage = document.getElementById("error-3-message");
