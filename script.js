@@ -2,34 +2,25 @@
 let reto3Questions = [];
 let currentReto3Index = 0;
 
-// Define setActivePage en el ámbito global
-const setActivePage = (pageId) => {
-    const pages = document.querySelectorAll(".page"); // Selecciona todas las páginas
-    pages.forEach((page) => {
-        page.classList.remove("active"); // Elimina la clase 'active' de todas las páginas
-    });
-
-    const targetPage = document.getElementById(pageId); // Busca la página objetivo por ID
-    if (targetPage) {
-        targetPage.classList.add("active"); // Activa la página objetivo
-        console.log(`Page "${pageId}" is now active.`);
-    } else {
-        console.error(`Page with ID "${pageId}" not found.`);
-    }
-};
-
-// Código dentro del evento DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Initial DOM structure:");
-    console.log(document.body.innerHTML);
+  const pages = document.querySelectorAll(".page");
 
-    const pages = document.querySelectorAll(".page");
-    console.log("Pages after DOMContentLoaded:", pages);
-
-    const finalPage = document.getElementById("final-page");
-    console.log("Final page after DOMContentLoaded:", finalPage);
-});
-
+  // Función para cambiar la página activa
+   const setActivePage = (pageId) => {
+  pages.forEach((page) => page.classList.remove("active"));
+  const targetPage = document.getElementById(pageId);
+  if (targetPage) {
+    targetPage.classList.add("active");
+    console.log(`Page "${pageId}" is now active.`);
+  } else {
+    console.error(`Page with ID "${pageId}" not found.`);
+  }
+};
+document.getElementById("start-game").onclick = () => {
+  console.log("Start Game button clicked");
+  setActivePage("challenge-1");
+  loadReto1Question();
+};
   // Lista de códigos válidos
   let validCodes = [
     "12345",
@@ -55,20 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const validateCode = (inputCode) => validCodes.includes(inputCode);
 
   // Manejo del botón de validación de código en la página inicial
-  document.getElementById("verify-code").addEventListener("click", () => {
-    const codeInput = document.getElementById("access-code").value.trim();
-    const errorElement = document.getElementById("code-error-message");
-
-    if (validateCode(codeInput)) {
-      errorElement.classList.add("hidden");
-      console.log("Code validated. Proceeding to Challenge 3.");
-      setActivePage("challenge-3");
-      loadReto3Question(); // Cargar preguntas
-    } else {
-      errorElement.classList.remove("hidden");
-      console.log("Invalid code.");
-    }
-  });
+document.getElementById("verify-code").addEventListener("click", () => {
+  const codeInput = document.getElementById("access-code").value.trim();
+  const errorElement = document.getElementById("code-error-message");
+ 
+  if (validateCode(codeInput)) {
+    errorElement.classList.add("hidden");
+    console.log("Code validated. Proceeding to Challenge 3.");
+    setActivePage("challenge-3");
+    loadReto3Question(); // Cargar preguntas
+  } else {
+    errorElement.classList.remove("hidden");
+    console.log("Invalid code.");
+  }
+});
   // Manejo del botón de validación de código en la transición al Reto 3
   document.getElementById("verify-code").addEventListener("click", () => {
     const codeInput = document.getElementById("access-code").value.trim();
@@ -324,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
       generateCode();
       setActivePage("transition-to-challenge-3");
     }
-    loadReto3Question();
+    loadReto3Question(); 
   };
 
   document
@@ -337,294 +328,268 @@ document.addEventListener("DOMContentLoaded", () => {
 // Declarar las variables globales
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar el índice de preguntas
-  reto3Questions = [
-    {
-      question:
-        "What were the main alliances dividing Europe before World War I?",
-      answers: [
-        "The Triple Entente and the Triple Alliance",
-        "The League of Nations and the Axis",
-        "The Franco-Russian Alliance and the Treaty of Versailles"
-      ],
-      correct: "The Triple Entente and the Triple Alliance"
-    },
-    {
-      question: "Which countries were part of the Triple Entente?",
-      answers: [
-        "France, Germany, and Great Britain",
-        "France, Great Britain, and Russia",
-        "Great Britain, Russia, and Austria-Hungary"
-      ],
-      correct: "France, Great Britain, and Russia"
-    },
-    {
-      question: "Who was assassinated on June 28, 1914, in Sarajevo?",
-      answers: ["Nicholas II", "Archduke Franz Ferdinand", "Gavrilo Princip"],
-      correct: "Archduke Franz Ferdinand"
-    },
-    {
-      question:
-        "Which country was accused of supporting the assassination of Archduke Franz Ferdinand?",
-      answers: ["Serbia", "Russia", "France"],
-      correct: "Serbia"
-    },
-    {
-      question:
-        "Which empire declared war on Serbia after it rejected the ultimatum?",
-      answers: ["Germany", "Austria-Hungary", "Turkey"],
-      correct: "Austria-Hungary"
-    },
-    {
-      question:
-        "Why did Nicholas II of Russia order the mobilization of the Russian army?",
-      answers: [
-        "To defend Serbia",
-        "To invade Germany",
-        "To respond to the naval blockade"
-      ],
-      correct: "To defend Serbia"
-    },
-    {
-      question: "What was Germany's military plan for a two-front war called?",
-      answers: ["Schlieffen Plan", "Plan XVII", "Operation Barbarossa"],
-      correct: "Schlieffen Plan"
-    },
-    {
-      question: "Why did Germany invade Belgium in 1914?",
-      answers: [
-        "To capture resources",
-        "To bypass and quickly defeat France",
-        "To prevent a Russian attack"
-      ],
-      correct: "To bypass and quickly defeat France"
-    },
-    {
-      question:
-        "Which country declared war on Germany after the invasion of Belgium?",
-      answers: ["United States", "Italy", "Great Britain"],
-      correct: "Great Britain"
-    },
-    {
-      question:
-        "Which battle marked the halting of the German advance near Paris?",
-      answers: ["Battle of the Marne", "Battle of Verdun", "Battle of Ypres"],
-      correct: "Battle of the Marne"
-    },
-    {
-      question:
-        "What strategy did both sides adopt after the Battle of the Marne?",
-      answers: [
-        "The 'Race to the Sea'",
-        "The invasion of Italy",
-        "Naval blockades"
-      ],
-      correct: "The 'Race to the Sea'"
-    },
-    {
-      question: "What type of warfare began with trenches dug along the front?",
-      answers: ["Mobile warfare", "War of attrition", "Trench warfare"],
-      correct: "Trench warfare"
-    },
-    {
-      question: "What revolutionary weapon did Germany introduce in 1914?",
-      answers: [
-        "Torpedo-launching submarines",
-        "Combat aircraft",
-        "Poison gas"
-      ],
-      correct: "Torpedo-launching submarines"
-    },
-    {
-      question: "Which power maintained the naval blockade on Germany?",
-      answers: ["Russia", "Great Britain", "France"],
-      correct: "Great Britain"
-    },
-    {
-      question:
-        "What naval battle did the British win at the start of the war?",
-      answers: ["Battle of Coronel", "Heligoland Bight", "Jutland"],
-      correct: "Heligoland Bight"
-    },
-    {
-      question: "What event marked Turkey's entry into the war?",
-      answers: [
-        "Bombing of Odessa and Sevastopol",
-        "Invasion of Persia",
-        "Union with Bulgaria"
-      ],
-      correct: "Bombing of Odessa and Sevastopol"
-    },
-    {
-      question: "What mistake did Russian forces make on the Eastern Front?",
-      answers: [
-        "Use of uncoded wireless messages",
-        "Direct attack on Berlin",
-        "Failing to mobilize sufficient troops"
-      ],
-      correct: "Use of uncoded wireless messages"
-    },
-    {
-      question:
-        "Which battle was a major victory for Germany on the Eastern Front?",
-      answers: [
-        "Battle of Tannenberg",
-        "Battle of the Marne",
-        "Battle of Masurian Lakes"
-      ],
-      correct: "Battle of Tannenberg"
-    },
-    {
-      question:
-        "Which country suffered significant defeats in its invasion of Serbia?",
-      answers: ["Germany", "Austria-Hungary", "Turkey"],
-      correct: "Austria-Hungary"
-    },
-    {
-      question: "What strategy did Colonel von Lettow-Vorbeck adopt in Africa?",
-      answers: [
-        "Guerrilla warfare",
-        "Naval assault",
-        "Massive invasion operations"
-      ],
-      correct: "Guerrilla warfare"
-    },
-    {
-      question:
-        "Which German colony was captured by Australian and New Zealand forces?",
-      answers: ["New Guinea", "Cameroon", "Togo"],
-      correct: "New Guinea"
-    },
-    {
-      question:
-        "Which Asian country joined the Allies at the start of the war?",
-      answers: ["Japan", "China", "Korea"],
-      correct: "Japan"
-    },
-    {
-      question:
-        "Which battle off Chile resulted in the loss of two British cruisers?",
-      answers: [
-        "Battle of Coronel",
-        "Battle of the Falkland Islands",
-        "Battle of Jutland"
-      ],
-      correct: "Battle of Coronel"
-    },
-    {
-      question: "Which city was besieged by the Russians on the Eastern Front?",
-      answers: ["Przemyśl", "Warsaw", "Lodz"],
-      correct: "Przemyśl"
-    },
-    {
-      question:
-        "Which battle caused a Russian retreat in the Caucasus in 1914?",
-      answers: ["Sarikamish", "Odessa", "Sevastopol"],
-      correct: "Sarikamish"
-    },
-    {
-      question: "Which country guaranteed Belgian neutrality before the war?",
-      answers: ["Great Britain", "France", "Germany"],
-      correct: "Great Britain"
-    },
-    {
-      question: "What colonial powers fought in Africa during 1914?",
-      answers: [
-        "Germany and Great Britain",
-        "France and Portugal",
-        "Belgium and Japan"
-      ],
-      correct: "Germany and Great Britain"
-    },
-    {
-      question:
-        "What treaty obligated Italy to join the Triple Alliance in case of a defensive war?",
-      answers: [
-        "Treaty of the Triple Alliance",
-        "Treaty of Paris",
-        "Treaty of Brest-Litovsk"
-      ],
-      correct: "Treaty of the Triple Alliance"
-    },
-    {
-      question: "What country bombed Belgrade at the start of the war?",
-      answers: ["Austria-Hungary", "Germany", "Russia"],
-      correct: "Austria-Hungary"
-    },
-    {
-      question:
-        "What event marked a brief ceasefire on the Western Front during Christmas 1914?",
-      answers: [
-        "Football matches in No Man's Land",
-        "Peace conference",
-        "Complete cessation of hostilities"
-      ],
-      correct: "Football matches in No Man's Land"
-    },
-    {
-      question: "What was the main goal of the Schlieffen Plan?",
-      answers: [
-        "Quickly defeat Russia before moving to France",
-        "Avoid a two-front war by defeating France first",
-        "Attack Belgium and seize resources"
-      ],
-      correct: "Avoid a two-front war by defeating France first"
-    },
-    {
-      question:
-        "What was the German plan designed to quickly attack France and then Russia called?",
-      answers: ["Schlieffen Plan", "Barbarossa Plan", "Plan XVII"],
-      correct: "Schlieffen Plan"
-    },
-    {
-      question:
-        "What military strategy did France implement at the start of the war to attack Germany?",
-      answers: ["Schlieffen Plan", "Plan XVII", "Operation Marne"],
-      correct: "Plan XVII"
-    }
+reto3Questions = [
+   {
+    question: "What were the main alliances dividing Europe before World War I?",
+    answers: [
+      "The Triple Entente and the Triple Alliance",
+      "The League of Nations and the Axis",
+      "The Franco-Russian Alliance and the Treaty of Versailles"
+    ],
+    correct: "The Triple Entente and the Triple Alliance"
+  },
+  {
+    question: "Which countries were part of the Triple Entente?",
+    answers: [
+      "France, Germany, and Great Britain",
+      "France, Great Britain, and Russia",
+      "Great Britain, Russia, and Austria-Hungary"
+    ],
+    correct: "France, Great Britain, and Russia"
+  },
+  {
+    question: "Who was assassinated on June 28, 1914, in Sarajevo?",
+    answers: ["Nicholas II", "Archduke Franz Ferdinand", "Gavrilo Princip"],
+    correct: "Archduke Franz Ferdinand"
+  },
+  {
+    question: "Which country was accused of supporting the assassination of Archduke Franz Ferdinand?",
+    answers: ["Serbia", "Russia", "France"],
+    correct: "Serbia"
+  },
+  {
+    question: "Which empire declared war on Serbia after it rejected the ultimatum?",
+    answers: ["Germany", "Austria-Hungary", "Turkey"],
+    correct: "Austria-Hungary"
+  },
+  {
+    question: "Why did Nicholas II of Russia order the mobilization of the Russian army?",
+    answers: [
+      "To defend Serbia",
+      "To invade Germany",
+      "To respond to the naval blockade"
+    ],
+    correct: "To defend Serbia"
+  },
+  {
+    question: "What was Germany's military plan for a two-front war called?",
+    answers: ["Schlieffen Plan", "Plan XVII", "Operation Barbarossa"],
+    correct: "Schlieffen Plan"
+  },
+  {
+    question: "Why did Germany invade Belgium in 1914?",
+    answers: [
+      "To capture resources",
+      "To bypass and quickly defeat France",
+      "To prevent a Russian attack"
+    ],
+    correct: "To bypass and quickly defeat France"
+  },
+  {
+    question: "Which country declared war on Germany after the invasion of Belgium?",
+    answers: ["United States", "Italy", "Great Britain"],
+    correct: "Great Britain"
+  },
+  {
+    question: "Which battle marked the halting of the German advance near Paris?",
+    answers: ["Battle of the Marne", "Battle of Verdun", "Battle of Ypres"],
+    correct: "Battle of the Marne"
+  },
+  {
+    question: "What strategy did both sides adopt after the Battle of the Marne?",
+    answers: [
+      "The 'Race to the Sea'",
+      "The invasion of Italy",
+      "Naval blockades"
+    ],
+    correct: "The 'Race to the Sea'"
+  },
+  {
+    question: "What type of warfare began with trenches dug along the front?",
+    answers: ["Mobile warfare", "War of attrition", "Trench warfare"],
+    correct: "Trench warfare"
+  },
+  {
+    question: "What revolutionary weapon did Germany introduce in 1914?",
+    answers: ["Torpedo-launching submarines", "Combat aircraft", "Poison gas"],
+    correct: "Torpedo-launching submarines"
+  },
+  {
+    question: "Which power maintained the naval blockade on Germany?",
+    answers: ["Russia", "Great Britain", "France"],
+    correct: "Great Britain"
+  },
+  {
+    question: "What naval battle did the British win at the start of the war?",
+    answers: ["Battle of Coronel", "Heligoland Bight", "Jutland"],
+    correct: "Heligoland Bight"
+  },
+  {
+    question: "What event marked Turkey's entry into the war?",
+    answers: [
+      "Bombing of Odessa and Sevastopol",
+      "Invasion of Persia",
+      "Union with Bulgaria"
+    ],
+    correct: "Bombing of Odessa and Sevastopol"
+  },
+  {
+    question: "What mistake did Russian forces make on the Eastern Front?",
+    answers: [
+      "Use of uncoded wireless messages",
+      "Direct attack on Berlin",
+      "Failing to mobilize sufficient troops"
+    ],
+    correct: "Use of uncoded wireless messages"
+  },
+  {
+    question: "Which battle was a major victory for Germany on the Eastern Front?",
+    answers: [
+      "Battle of Tannenberg",
+      "Battle of the Marne",
+      "Battle of Masurian Lakes"
+    ],
+    correct: "Battle of Tannenberg"
+  },
+  {
+    question: "Which country suffered significant defeats in its invasion of Serbia?",
+    answers: ["Germany", "Austria-Hungary", "Turkey"],
+    correct: "Austria-Hungary"
+  },
+  {
+    question: "What strategy did Colonel von Lettow-Vorbeck adopt in Africa?",
+    answers: ["Guerrilla warfare", "Naval assault", "Massive invasion operations"],
+    correct: "Guerrilla warfare"
+  },
+  {
+    question: "Which German colony was captured by Australian and New Zealand forces?",
+    answers: ["New Guinea", "Cameroon", "Togo"],
+    correct: "New Guinea"
+  },
+  {
+    question: "Which Asian country joined the Allies at the start of the war?",
+    answers: ["Japan", "China", "Korea"],
+    correct: "Japan"
+  },
+  {
+    question: "Which battle off Chile resulted in the loss of two British cruisers?",
+    answers: [
+      "Battle of Coronel",
+      "Battle of the Falkland Islands",
+      "Battle of Jutland"
+    ],
+    correct: "Battle of Coronel"
+  },
+  {
+    question: "Which city was besieged by the Russians on the Eastern Front?",
+    answers: ["Przemyśl", "Warsaw", "Lodz"],
+    correct: "Przemyśl"
+  },
+  {
+    question: "Which battle caused a Russian retreat in the Caucasus in 1914?",
+    answers: ["Sarikamish", "Odessa", "Sevastopol"],
+    correct: "Sarikamish"
+  },
+  {
+    question: "Which country guaranteed Belgian neutrality before the war?",
+    answers: ["Great Britain", "France", "Germany"],
+    correct: "Great Britain"
+  },
+  {
+    question: "What colonial powers fought in Africa during 1914?",
+    answers: [
+      "Germany and Great Britain",
+      "France and Portugal",
+      "Belgium and Japan"
+    ],
+    correct: "Germany and Great Britain"
+  },
+  {
+    question: "What treaty obligated Italy to join the Triple Alliance in case of a defensive war?",
+    answers: [
+      "Treaty of the Triple Alliance",
+      "Treaty of Paris",
+      "Treaty of Brest-Litovsk"
+    ],
+    correct: "Treaty of the Triple Alliance"
+  },
+  {
+    question: "What country bombed Belgrade at the start of the war?",
+    answers: ["Austria-Hungary", "Germany", "Russia"],
+    correct: "Austria-Hungary"
+  },
+  {
+    question: "What event marked a brief ceasefire on the Western Front during Christmas 1914?",
+    answers: [
+      "Football matches in No Man's Land",
+      "Peace conference",
+      "Complete cessation of hostilities"
+    ],
+    correct: "Football matches in No Man's Land"
+  },
+  {
+    question: "What was the main goal of the Schlieffen Plan?",
+    answers: [
+      "Quickly defeat Russia before moving to France",
+      "Avoid a two-front war by defeating France first",
+      "Attack Belgium and seize resources"
+    ],
+    correct: "Avoid a two-front war by defeating France first"
+  },
+  {
+    question: "What was the German plan designed to quickly attack France and then Russia called?",
+    answers: ["Schlieffen Plan", "Barbarossa Plan", "Plan XVII"],
+    correct: "Schlieffen Plan"
+  },
+  {
+    question: "What military strategy did France implement at the start of the war to attack Germany?",
+    answers: ["Schlieffen Plan", "Plan XVII", "Operation Marne"],
+    correct: "Plan XVII"
+  }
   ];
   currentReto3Index = 0;
-
+  
   console.log("Preguntas del Reto 3 inicializadas:", reto3Questions);
   console.log("Índice inicial:", currentReto3Index);
 });
 
-console.log(
-  "Current Index:",
-  currentReto3Index,
-  "Total Questions:",
-  reto3Questions.length
-);
+  console.log("Current Index:", currentReto3Index, "Total Questions:", reto3Questions.length);
+
+  
+
+
+
 
 const loadReto3Question = () => {
-  const questionText = document.getElementById("question-3-text");
-  const answersContainer = document.getElementById("answers-3-container");
-  const errorMessage = document.getElementById("error-3-message");
-
-  if (!questionText || !answersContainer || !errorMessage) {
-    console.error("Los elementos del DOM para el Reto 3 no están disponibles.");
+  // Verifica si las variables están inicializadas
+  if (!reto3Questions || currentReto3Index === undefined) {
+    console.error("Las variables reto3Questions o currentReto3Index no están inicializadas.");
     return; // Sale de la función para evitar errores
   }
+   const questionText = document.getElementById("question-3-text");
+  const answersContainer = document.getElementById("answers-3-container");
+  const errorMessage = document.getElementById("error-3-message"); 
 
-  // Asegúrate de que los elementos del DOM existen antes de usarlos
+    // Asegúrate de que los elementos del DOM existen antes de usarlos
   if (!questionText || !answersContainer || !errorMessage) {
-    console.error(
-      "Uno o más elementos del DOM no se encontraron para cargar las preguntas."
-    );
+    console.error("Uno o más elementos del DOM no se encontraron para cargar las preguntas.");
     return;
   }
-  // Verifica que el índice actual no exceda el número de preguntas
+ // Verifica que el índice actual no exceda el número de preguntas
   if (currentReto3Index >= reto3Questions.length) {
     alert("You have completed Challenge 3!");
     setActivePage("final-page");
     return;
   }
 
-  // Obtiene la pregunta actual
+ // Obtiene la pregunta actual
   const currentQuestion = reto3Questions[currentReto3Index];
   questionText.textContent = currentQuestion.question;
   answersContainer.innerHTML = ""; // Limpia las respuestas previas
   errorMessage.classList.add("hidden"); // Oculta mensajes de error
 
+  
+    
   // Crea los botones de respuesta
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -633,72 +598,41 @@ const loadReto3Question = () => {
     button.onclick = () => checkReto3Answer(answer);
     answersContainer.appendChild(button);
   });
-};
-
+};  
+  
 const checkReto3Answer = (selectedAnswer) => {
-    const currentQuestion = reto3Questions[currentReto3Index];
-    const errorMessage = document.getElementById("error-3-message");
+  const currentQuestion = reto3Questions[currentReto3Index];
+  const errorMessage = document.getElementById("error-3-message");
 
-    if (selectedAnswer === currentQuestion.correct) {
-        currentReto3Index++;
-        if (currentReto3Index >= reto3Questions.length) {
-            console.log("Todas las preguntas respondidas. Cargando página final...");
-            loadFinalPage(); // Carga la página final
-        } else {
-            loadReto3Question(); // Carga la siguiente pregunta
-        }
-    } else {
-        errorMessage.classList.remove("hidden");
-    }
+  if (selectedAnswer === currentQuestion.correct) {
+    currentReto3Index++;
+    loadReto3Question(); // Carga la siguiente pregunta
+  } else {
+    errorMessage.classList.remove("hidden"); // Muestra mensaje de error
+  }
 };
+  const loadFinalPage = async () => {
+    setActivePage("final-page");
 
-const loadFinalPage = async () => {
-    const targetPage = document.getElementById("final-page");
-    if (!targetPage) {
-        console.error("Final page not found in the DOM.");
-        return; // Termina si la página no existe
-    }
+    const response = await fetch(
+      "https://docs.google.com/spreadsheets/d/1-RRMrn93y7YkyIDNQWF3VsbqwisvKTDf0xKwoI0KorQ/export?format=csv"
+    );
+    const text = await response.text();
+    const codes = text.split("\n");
+    const randomCode = codes[Math.floor(Math.random() * codes.length)];
+    document.getElementById("final-code").textContent = randomCode.trim();
+  };
 
-    setActivePage("final-page"); // Activa la página
-
-    try {
-        const response = await fetch(
-            "https://docs.google.com/spreadsheets/d/1-RRMrn93y7YkyIDNQWF3VsbqwisvKTDf0xKwoI0KorQ/export?format=csv"
-        );
-
-        if (!response.ok) throw new Error("Error fetching codes");
-
-        const text = await response.text();
-        const codes = text.split("\n");
-        const randomCode = codes[Math.floor(Math.random() * codes.length)].trim();
-
-        document.getElementById("final-code").textContent = randomCode || "00000";
-        console.log("Final code loaded:", randomCode);
-    } catch (error) {
-        console.error("Failed to load final code:", error);
-        document.getElementById("final-code").textContent = "00000"; // Código de respaldo
-    }
-};
-
-// Navegación desde el Reto 2 al Reto 3
-document.getElementById("verify-code").addEventListener("click", () => {
-  const codeInput = document.getElementById("access-code").value.trim();
-  const errorElement = document.getElementById("code-error-message");
-
-  if (validateCode(codeInput)) {
-    errorElement.classList.add("hidden");
-    console.log("Code validated. Proceeding to Challenge 3.");
-    setActivePage("challenge-3");
-
-    // Solo intenta acceder a los elementos cuando la página esté activa
-    setTimeout(() => {
-          setActivePage("final-page");
-}, 100);
-      console.log(document.getElementById("question-3-text"));
-      console.log(document.getElementById("answers-3-container"));
-      console.log(document.getElementById("error-3-message"));
-      console.log(document.getElementById("final-code"));
-    }, 100); // Da un pequeño retraso para asegurar la activación del DOM
+  // Navegación desde el Reto 2 al Reto 3
+  document.getElementById("verify-code").addEventListener("click", () => {
+    const codeInput = document.getElementById("access-code").value.trim();
+    const errorElement = document.getElementById("code-error-message");
+    
+    if (validateCode(codeInput)) {
+      errorElement.classList.add("hidden");
+      console.log("Code validated. Proceeding to Challenge 3.");
+       setActivePage("challenge-3");
+    loadReto3Question(); // Carga la primera pregunta
   } else {
     errorElement.classList.remove("hidden");
     console.log("Invalid code.");
