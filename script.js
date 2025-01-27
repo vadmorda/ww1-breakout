@@ -46,13 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const errorElement = document.getElementById("code-error");
     if (validateCode(codeInput)) {
       errorElement.classList.add("hidden");
-      console.log("Code validated. Loading Challenge 3.");
       alert("Code accepted. Proceeding to Challenge 3...");
       setActivePage("challenge-3");
-      loadReto3Question();
     } else {
       errorElement.classList.remove("hidden");
-       console.log("Invalid code.");
     }
   });
 
@@ -554,7 +551,6 @@ document.addEventListener("DOMContentLoaded", () => {
    console.log("Loading question index:", currentReto3Index);
 
   const loadReto3Question = () => {
-    console.log("Loading question index:", currentReto3Index);
   const questionText = document.getElementById("question-3-text");
   const answersContainer = document.getElementById("answers-3-container");
   const errorMessage = document.getElementById("error-3-message");
@@ -584,8 +580,12 @@ if (currentReto3Index >= reto3Questions.length) {
     button.classList.add("answer-option");
     button.onclick = () => checkReto3Answer(answer);
     answersContainer.appendChild(button);
-    console.log("Question loaded:", currentQuestion.question);
   });
+};
+  console.log("Question loaded:", currentQuestion.question);
+};
+  
+  
 const checkReto3Answer = (selectedAnswer) => {
   const currentQuestion = reto3Questions[currentReto3Index];
   const errorMessage = document.getElementById("error-3-message");
@@ -621,4 +621,4 @@ const checkReto3Answer = (selectedAnswer) => {
     } else {
       errorElement.classList.remove("hidden");
     }
-});
+  });
