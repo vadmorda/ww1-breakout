@@ -33,16 +33,17 @@
   </div>
 
   <!-- Reto 1 -->
-  <div id="challenge-1" class="page hidden">
-    <h2>Challenge 1: The Causes of World War I</h2>
-    <p>Watch the video below, stop it whenever you need, take notes and then, answer the questions to proceed.</p>
-    <div class="video-container">
-    </div>
-    <div id="quiz">
-      <p id="question-text"></p>
-      <div id="answers"></div>
-    </div>
+<div id="challenge-1" class="page hidden">
+  <h2>Challenge 1: The Causes of World War I</h2>
+  <p>Watch the video below, stop it whenever you need, take notes and then, answer the questions to proceed.</p>
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/BXtGneTCMgU" frameborder="0" allowfullscreen></iframe>
   </div>
+  <div id="quiz">
+    <p id="question-text"></p>
+    <div id="answers"></div>
+  </div>
+</div>
 
   <!-- Página de Transición después del Reto 1 -->
   <div id="transition-page" class="page hidden" style="background-image: url('https://drive.google.com/uc?id=1UxLa6yAY0UB_2vdIGY-pTECVUZxLgig3');">
@@ -61,13 +62,17 @@
   <div id="challenge-2" class="page hidden" style="background-image: url('https://i.ibb.co/vv1fS6h/war-map-background.jpg');">
     <div id="map-container">
       <h2>Observe the map carefully</h2>
-      <img src="https://drive.google.com/uc?id=1A3O0qayZvs8AuLO1lFZqRQ2s2MPShGDQ" alt="World War I Map" style="max-width: 100%; border-radius: 10px;">
+      <img src="https://drive.google.com/uc?id=1A3O0qayZvs8AuLO1lFZqRQ2s2MPShGDQ" alt="World War I Map" style="width: 80%; max-width: 800px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
       <button class="button" id="start-challenge-2">Start Questions</button>
+      
+
+      
     </div>
     <div id="questions-container-2" class="hidden">
       <h2 id="question-text-2">Loading question...</h2>
       <div id="answers-container-2"></div>
       <button class="button hidden" id="next-button-2">Next</button>
+
       <p id="error-message-2" class="hidden" style="color: red;">Incorrect! Try again.</p>
     </div>
   </div>
