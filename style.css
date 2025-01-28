@@ -116,13 +116,23 @@ body {
 }
 
 /* Page Handling */
+/* Control de visibilidad de las páginas */
 .page {
-  display: none;
+  display: none; /* Ocultar por defecto */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .page.active {
-  display: block;
+  display: flex; /* Mostrar la página activa */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 /* Quiz */
 #quiz, #questions-container-2 {
@@ -182,6 +192,24 @@ body {
   max-width: 750px;
 }
 
+/* Página de transición al reto 3 */
+#transition-to-challenge-3 {
+  display: none; /* Oculta inicialmente */
+  width: 100%; /* Asegura que ocupa todo el ancho */
+  height: 100%; /* Asegura que ocupa toda la altura */
+  justify-content: center; /* Centra contenido */
+  align-items: center; /* Centra contenido */
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#transition-to-challenge-3.active {
+  display: flex; /* Mostrar como flexbox */
+}
+
 #transition-to-challenge-3 input {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -221,61 +249,111 @@ body {
 #code-entry p {
   margin-top: 10px;
 }
-/* Reto 3 */
-#challenge-3 {
+
+/* --- Updated Reto 2 Styles --- */
+#challenge-2 {
+  background-image: url('https://i.ibb.co/vv1fS6h/war-map-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid #e94560;
-  border-radius: 10px;
-  color: white;
-  max-width: 800px;
-  margin: 20px auto;
+  color: #fff;
+  overflow: hidden;
 }
 
-#challenge-3 h2 {
-  font-size: 2.5em;
-  color: white;
-  margin-bottom: 15px;
+#map-container {
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+  padding: 20px;
 }
 
-#quiz-3-container {
-  margin: 20px auto;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border: 2px solid #e94560;
+#map-container img {
+  width: 90%;
+  max-width: 1000px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+#start-challenge-2 {
+  margin-top: 20px;
+  padding: 20px 50px;
+  font-size: 1.8em;
+  background-color: #e94560;
+  color: #fff;
+  border: none;
   border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#start-challenge-2:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.5);
+}
+
+#answers-container-2 button {
+  width: 90%;
   max-width: 600px;
-}
-
-#answers-3-container button {
-  display: block;
+  padding: 15px 20px;
   margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #444;
+  font-size: 1.5em;
+  background-color: #e94560;
   color: white;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#answers-3-container button:hover {
-  background-color: #e94560;
-}
-
-/* Página Final */
-#final-page {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid #e94560;
   border-radius: 10px;
-  color: white;
-  max-width: 800px;
-  margin: 20px auto;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-#final-page h2 {
-  font-size: 2.5em;
-  color: #e94560;
-  margin-bottom: 15px;
+#answers-container-2 button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(233, 69, 96, 0.6);
+}
+
+#questions-container-2 h2 {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#questions-container-2 {
+  max-width: 90%;
+  padding: 20px;
+}
+
+
+#questions-container-2 p {
+  margin: 15px auto;
+  color: red;
+  font-weight: bold;
+}
+/* Botón "Next" */
+#next-button-2 {
+  display: block; /* Asegura que es visible */
+  margin: 20px auto; /* Centrado */
+  padding: 15px 40px;
+  font-size: 1.5em;
+  background-color: #e94560;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#next-button-2.hidden {
+  display: none; /* Oculta cuando se aplica la clase 'hidden' */
+}
+
+#next-button-2:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.5);
 }
