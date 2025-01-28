@@ -7,13 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Función para cambiar la página activa
   const setActivePage = (pageId) => {
-    // Limpia la clase 'active' de todas las páginas
     pages.forEach((page) => {
       page.classList.remove("active");
       page.style.display = "none"; // Asegura que las páginas ocultas no se vean
     });
 
-    // Activa la nueva página
     const targetPage = document.getElementById(pageId);
     if (targetPage) {
       targetPage.classList.add("active");
@@ -23,15 +21,38 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(`Page with ID "${pageId}" not found.`);
     }
   };
-// Configura la página inicial como activa
+
+  // Forzar inicio en la página de introducción
+  // Limpia estados previos que puedan estar almacenados
+  if (typeof localStorage !== "undefined") {
+    localStorage.clear(); // Limpia cualquier estado persistente
+  }
+
+  // Configura la página inicial como activa
   setActivePage("page-intro");
 
-  // Manejo del botón para iniciar el juego
+  // Botón para iniciar el juego
   document.getElementById("start-game").onclick = () => {
     console.log("Start Game button clicked");
     setActivePage("challenge-1");
     loadReto1Question();
   };
+
+  // Botón para validar códigos
+  document.getElementById("verify-code").addEventListener("click", () => {
+    const codeInput = document.getElementById("access-code").value.trim();
+    const errorElement = document.getElementById("code-error-message");
+
+    if (validateCode(codeInput)) {
+      errorElement.classList.add("hidden");
+      console.log("Code validated. Proceeding to Challenge 3.");
+      setActivePage("challenge-3");
+      loadReto3Question();
+    } else {
+      errorElement.classList.remove("hidden");
+      console.log("Invalid code.");
+    }
+  });
 
 document.getElementById("start-game").onclick = () => {
   console.log("Start Game button clicked");
