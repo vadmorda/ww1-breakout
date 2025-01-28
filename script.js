@@ -9,27 +9,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const setActivePage = (pageId) => {
     pages.forEach((page) => {
       page.classList.remove("active");
-      page.style.display = "none"; // Asegura que las páginas ocultas no se vean
+      page.style.display = "none"; // Ocultar todas las páginas
     });
 
     const targetPage = document.getElementById(pageId);
     if (targetPage) {
       targetPage.classList.add("active");
-      targetPage.style.display = "flex"; // Usa flex para mostrar correctamente la página
+      targetPage.style.display = "flex"; // Mostrar la página activa
       console.log(`Page "${pageId}" is now active.`);
     } else {
       console.error(`Page with ID "${pageId}" not found.`);
     }
   };
 
-  // Forzar inicio en la página de introducción
-  // Limpia estados previos que puedan estar almacenados
-  if (typeof localStorage !== "undefined") {
-    localStorage.clear(); // Limpia cualquier estado persistente
-  }
-
-  // Configura la página inicial como activa
-  setActivePage("page-intro");
+  // Configuración inicial
+  console.log("Forzando inicio en la página de introducción...");
+  setActivePage("page-intro"); // Asegura que la página inicial siempre sea "page-intro"
 
   // Botón para iniciar el juego
   document.getElementById("start-game").onclick = () => {
@@ -52,8 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       errorElement.classList.remove("hidden");
       console.log("Invalid code.");
     }
-  });
-
+});
 document.getElementById("start-game").onclick = () => {
   console.log("Start Game button clicked");
   setActivePage("challenge-1");
