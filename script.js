@@ -23,8 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(`Page with ID "${pageId}" not found.`);
     }
   };
-
-  // Configura la página inicial como activa
+// Configura la página inicial como activa
   setActivePage("page-intro");
 
   // Manejo del botón para iniciar el juego
