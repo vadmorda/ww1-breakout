@@ -6,16 +6,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const pages = document.querySelectorAll(".page");
 
   // Función para cambiar la página activa
-   const setActivePage = (pageId) => {
-  pages.forEach((page) => page.classList.remove("active"));
-  const targetPage = document.getElementById(pageId);
-  if (targetPage) {
-    targetPage.classList.add("active");
-    console.log(`Page "${pageId}" is now active.`);
-  } else {
-    console.error(`Page with ID "${pageId}" not found.`);
-  }
-};
+  const setActivePage = (pageId) => {
+    // Limpia la clase 'active' de todas las páginas
+    pages.forEach((page) => {
+      page.classList.remove("active");
+      page.style.display = "none"; // Asegura que las páginas ocultas no se vean
+    });
+
+    // Activa la nueva página
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+      targetPage.classList.add("active");
+      targetPage.style.display = "flex"; // Usa flex para mostrar correctamente la página
+      console.log(`Page "${pageId}" is now active.`);
+    } else {
+      console.error(`Page with ID "${pageId}" not found.`);
+    }
+  };
+
+  // Configura la página inicial como activa
+  setActivePage("page-intro");
+
+  // Manejo del botón para iniciar el juego
+  document.getElementById("start-game").onclick = () => {
+    console.log("Start Game button clicked");
+    setActivePage("challenge-1");
+    loadReto1Question();
+  };
+
 document.getElementById("start-game").onclick = () => {
   console.log("Start Game button clicked");
   setActivePage("challenge-1");
@@ -306,24 +324,24 @@ document.getElementById("verify-code").addEventListener("click", () => {
     }
   };
 
-  const loadNextQuestion2 = () => {
-    currentReto2Index++;
-    if (currentReto2Index < reto2Questions.length) {
-      loadReto2Question();
-    } else {
-      alert("You have completed Challenge 2!");
-      generateCode();
-      setActivePage("transition-to-challenge-3");
-    }
-    loadReto3Question(); 
-  };
-
+const loadNextQuestion2 = () => {
+  currentReto2Index++;
+  if (currentReto2Index < reto2Questions.length) {
+    loadReto2Question(); // Carga la siguiente pregunta
+  } else {
+    alert("You have completed Challenge 2!");
+    generateCode(); // Genera el código para el Reto 3
+    setActivePage("transition-to-challenge-3"); // Cambia a la página de transición
+  }
+};
+document
+  .getElementById("next-button-2")
+  .addEventListener("click", loadNextQuestion2);
+  
   document
     .getElementById("start-challenge-2")
     .addEventListener("click", startChallenge2);
-  document
-    .getElementById("next-button-2")
-    .addEventListener("click", loadNextQuestion2);
+
 });
 // Declarar las variables globales
 document.addEventListener("DOMContentLoaded", () => {
@@ -638,4 +656,3 @@ const checkReto3Answer = (selectedAnswer) => {
     console.log("Invalid code.");
   }
 });
-
